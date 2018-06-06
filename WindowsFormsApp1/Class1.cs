@@ -8,5 +8,9 @@ namespace Ex05.Damka
 {
     class Class1
     {
+        public Class1()
+        {
+
+        }
     }
 }
