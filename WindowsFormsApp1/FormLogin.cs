@@ -18,6 +18,7 @@ namespace Ex05.Damka
         private TextBox textBoxPlayerOne;
         private TextBox textBoxPlayerTwo;
         private CheckBox playerTwo;
+        private Button buttonDone;
         private Label boardSize;
 
         public FormLogin()
@@ -36,6 +37,7 @@ namespace Ex05.Damka
             this.textBoxPlayerOne = new System.Windows.Forms.TextBox();
             this.textBoxPlayerTwo = new System.Windows.Forms.TextBox();
             this.playerTwo = new System.Windows.Forms.CheckBox();
+            this.buttonDone = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // boardSize
@@ -132,9 +134,20 @@ namespace Ex05.Damka
             this.playerTwo.UseVisualStyleBackColor = true;
             this.playerTwo.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
+            // button1
+            // 
+            this.buttonDone.Location = new System.Drawing.Point(222, 171);
+            this.buttonDone.Name = "buttonDone";
+            this.buttonDone.Size = new System.Drawing.Size(75, 23);
+            this.buttonDone.TabIndex = 10;
+            this.buttonDone.Text = "Done";
+            this.buttonDone.UseVisualStyleBackColor = true;
+            this.buttonDone.Click += new System.EventHandler(this.buttonDone_Click);
+            // 
             // FormLogin
             // 
             this.ClientSize = new System.Drawing.Size(323, 210);
+            this.Controls.Add(this.buttonDone);
             this.Controls.Add(this.textBoxPlayerTwo);
             this.Controls.Add(this.playerTwo);
             this.Controls.Add(this.textBoxPlayerOne);
@@ -191,6 +204,11 @@ namespace Ex05.Damka
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void buttonDone_Click(object sender, EventArgs e)
         {
 
         }
