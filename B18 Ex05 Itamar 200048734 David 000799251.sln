@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2018
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex05.Damka", "WindowsFormsApp1\Ex05.Damka.csproj", "{00F07992-ADB1-4DC4-A6A2-F04F948A4604}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex05.Ex02.Logic", "Ex02.Logic\Ex05.Ex02.Logic.csproj", "{8C58CB53-9AA5-4C95-8B0E-DC587139A7AB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{00F07992-ADB1-4DC4-A6A2-F04F948A4604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00F07992-ADB1-4DC4-A6A2-F04F948A4604}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00F07992-ADB1-4DC4-A6A2-F04F948A4604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C58CB53-9AA5-4C95-8B0E-DC587139A7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C58CB53-9AA5-4C95-8B0E-DC587139A7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C58CB53-9AA5-4C95-8B0E-DC587139A7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C58CB53-9AA5-4C95-8B0E-DC587139A7AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
