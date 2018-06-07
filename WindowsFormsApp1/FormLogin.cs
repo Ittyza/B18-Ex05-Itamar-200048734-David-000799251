@@ -271,7 +271,7 @@ namespace Ex05.Damka
             GameRules.GameIsOff = false;
             GameRules.IsPlayerOneGame = true;
             GameRules.SizeOfGameBoard = getSizeOfBoard();
-            //GameRules.AgainstPlayerTwo = che;
+            GameRules.AgainstPlayerTwo = textBoxPlayerTwo.Enabled;
             if (GameRules.AgainstPlayerTwo)
             {
                 Player playerTwo = new Player
@@ -287,10 +287,30 @@ namespace Ex05.Damka
                 {
                     PlayerName = "Computer",
                     TypeOfPiece = 1,
-                    Score = PlayGame.ScoreOfPlayerTwo
+                    //Score = PlayGame.ScoreOfPlayerTwo
                 };
                 GameRules.PlayerTwo = playerTwo;
             }
+        }
+
+        private int getSizeOfBoard()
+        {
+            int toReturn = 0;
+            if (radioButton6.Checked)
+            {
+                toReturn = 6;
+            }
+
+            else if (radioButton8.Checked)
+            {
+                toReturn = 8;
+            }
+
+            else if (radioButton10.Checked)
+            {
+                toReturn = 10;
+            }
+            return toReturn;
         }
     }
 }
