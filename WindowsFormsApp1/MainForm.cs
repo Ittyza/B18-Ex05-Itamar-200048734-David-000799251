@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace WindowsFormsApp1
+namespace Ex05.Damka
 {
     public partial class MainForm : Form
     {
@@ -18,6 +18,24 @@ namespace WindowsFormsApp1
         }
 
         private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void InitializeComponent()
+        {
+            this.SuspendLayout();
+            // 
+            // MainForm
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.Name = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load_1);
+            this.ResumeLayout(false);
+
+        }
+
+        private void MainForm_Load_1(object sender, EventArgs e)
         {
 
         }
