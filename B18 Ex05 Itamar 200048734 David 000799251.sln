@@ -9,14 +9,14 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ex05.Ex02.Logic", "Ex02.Log
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{59A603FD-1F9F-4AA6-ACBB-BD566A9BA51D}"
 	ProjectSection(SolutionItems) = preProject
-		WindowsFormsApp1\bin\Debug\Resources\10x10board.jpg = WindowsFormsApp1\bin\Debug\Resources\10x10board.jpg
-		WindowsFormsApp1\bin\Debug\Resources\6x6board.jpg = WindowsFormsApp1\bin\Debug\Resources\6x6board.jpg
-		WindowsFormsApp1\bin\Debug\Resources\8x8board.jpg = WindowsFormsApp1\bin\Debug\Resources\8x8board.jpg
-		WindowsFormsApp1\bin\Debug\Resources\BlackPiece.jpg = WindowsFormsApp1\bin\Debug\Resources\BlackPiece.jpg
+		..\..\..\Desktop\10x10board.jpg = ..\..\..\Desktop\10x10board.jpg
+		..\..\..\Desktop\6x6board.jpg = ..\..\..\Desktop\6x6board.jpg
+		..\..\..\Desktop\8x8board.jpg = ..\..\..\Desktop\8x8board.jpg
+		..\..\..\Desktop\BlackPiece.jpg = ..\..\..\Desktop\BlackPiece.jpg
 		WindowsFormsApp1\bin\Debug\Resources\DamkaIcon.ico = WindowsFormsApp1\bin\Debug\Resources\DamkaIcon.ico
-		WindowsFormsApp1\bin\Debug\Resources\KBlack.jpg = WindowsFormsApp1\bin\Debug\Resources\KBlack.jpg
-		WindowsFormsApp1\bin\Debug\Resources\KRed.jpg = WindowsFormsApp1\bin\Debug\Resources\KRed.jpg
-		WindowsFormsApp1\bin\Debug\Resources\RedPiece.jpg = WindowsFormsApp1\bin\Debug\Resources\RedPiece.jpg
+		..\..\..\Desktop\KBlack.jpg = ..\..\..\Desktop\KBlack.jpg
+		..\..\..\Desktop\KRed.jpg = ..\..\..\Desktop\KRed.jpg
+		..\..\..\Desktop\RedPiece.jpg = ..\..\..\Desktop\RedPiece.jpg
 	EndProjectSection
 EndProject
 Global
