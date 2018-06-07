@@ -22,6 +22,7 @@ namespace Ex05.Damka
         private Image blackPiece;
         private PictureBox gameBoard;
         private Image blackKing;
+        private FormLogin formLogin;
 
 
 
@@ -35,18 +36,18 @@ namespace Ex05.Damka
 
         private void InitializeComponent()
         {
-            //this.gameBoard = new System.Windows.Forms.PictureBox();
             this.playerOne = new System.Windows.Forms.Label();
             this.scorePlayer1 = new System.Windows.Forms.Label();
             this.scorePlayer2 = new System.Windows.Forms.Label();
             this.playerTwo = new System.Windows.Forms.Label();
-            this.gameBoard = new PictureBox();
+            this.gameBoard = new System.Windows.Forms.PictureBox();
             this.SuspendLayout();
             // 
             // playerOne
             // 
             this.playerOne.AutoSize = true;
             this.playerOne.Location = new System.Drawing.Point(113, 44);
+            this.playerOne
             this.playerOne.Name = "playerOne";
             this.playerOne.Size = new System.Drawing.Size(48, 13);
             this.playerOne.TabIndex = 0;
@@ -79,11 +80,14 @@ namespace Ex05.Damka
             this.playerTwo.TabIndex = 2;
             this.playerTwo.Text = "Player 2:";
             // 
-            // pictureBox1
+            // gameBoard
             // 
-            this.gameBoard.Location = new System.Drawing.Point(24, 102);
-            this.gameBoard.Name = "pictureBox1";
-            this.gameBoard.Size = new System.Drawing.Size(500, 407);
+
+            //this.gameBoard.Location = new System.Drawing.Point(93, 118);
+            this.gameBoard.Left = 12;
+            this.gameBoard.Top = this.playerOne.Bottom + 12; 
+            this.gameBoard.Name = "gameBoard";
+            this.gameBoard.Size = new System.Drawing.Size(371, 371);
             this.gameBoard.TabIndex = 4;
             this.gameBoard.TabStop = false;
             // 
@@ -99,6 +103,7 @@ namespace Ex05.Damka
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Damka";
             this.Load += new System.EventHandler(this.MainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.gameBoard)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -106,9 +111,10 @@ namespace Ex05.Damka
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            FormLogin formLogin = new FormLogin();
+            formLogin = new FormLogin();
             formLogin.Owner = this;
-            formLogin.ShowDialog(); 
+            formLogin.ShowDialog();
+            setSizeOfBoard();
         }
 
         private void InitiateImages()
@@ -118,6 +124,26 @@ namespace Ex05.Damka
             redKing = Image.FromFile("Resources/KRed.jpg");
             blackPiece = Image.FromFile("Resources/BlackPiece.jpg");
             blackKing = Image.FromFile("Resources/KBlack.jpg");
+        }
+        private void setSizeOfBoard()
+        {
+            if (formLogin.RadioButton6.Checked)
+            {
+                this.GameBoard.Image = global::WindowsFormsApp1.Properties.Resources._6x6board;
+                this.ClientSize = new Size(396, playerOne.Bottom + gameBoard.Bottom + 24);
+            }
+
+            else if (formLogin.RadioButton8.Checked)
+            {
+                this.GameBoard.Image = global::WindowsFormsApp1.Properties.Resources._8x8board;
+                this.ClientSize = new Size(455, 455);
+            }
+
+            else if (formLogin.RadioButton10.Checked)
+            {
+                this.GameBoard.Image = global::WindowsFormsApp1.Properties.Resources._10x10board;
+                this.ClientSize = new Size(564, 564);
+            }
         }
     }
 }

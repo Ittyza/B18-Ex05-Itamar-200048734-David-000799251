@@ -57,6 +57,11 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -73,12 +78,37 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Ex02.Logic\Ex05.Ex02.Logic.csproj">
       <Project>{8c58cb53-9aa5-4c95-8b0e-dc587139a7ab}</Project>
       <Name>Ex05.Ex02.Logic</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\6x6board.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\8x8board.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\10x10board.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BlackPiece.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KBlack.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\KRed.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\RedPiece.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

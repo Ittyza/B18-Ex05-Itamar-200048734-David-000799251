@@ -24,6 +24,10 @@ namespace Ex05.Damka
 
         private GameRules m_GameRules;
 
+        public RadioButton RadioButton6 { get => radioButton6; set => radioButton6 = value; }
+        public RadioButton RadioButton8 { get => radioButton8; set => radioButton8 = value; }
+        public RadioButton RadioButton10 { get => radioButton10; set => radioButton10 = value; }
+
         public FormLogin()
         {
             InitializeComponent();
@@ -296,25 +300,18 @@ namespace Ex05.Damka
         private int getSizeOfBoard()
         {
             int toReturn = 0;
-            if (radioButton6.Checked)
+            if (RadioButton6.Checked)
             {
-                //(this.Parent as MainForm).GameBoard.ImageLocation = @"C:\Users\David S. Brima\source\repos\B18 Ex05 ItamarChuvali 200048734 DavidBrima 000799251\B18-Ex05-Itamar-200048734-David-000799251\Resources\6x6board.jpg";
-                (this.Parent as MainForm).ClientSize = new Size(300,400);
-                //(this.Parent as MainForm).BoardImage = Image.FromFile("Resources/6x6board.jpg");
                 toReturn = 6;
             }
 
-            else if (radioButton8.Checked)
+            else if (RadioButton8.Checked)
             {
-                //this.Parent.ClientSize = new Size(300, 400);
-                //(this.Parent as MainForm).BoardImage = Image.FromFile("Resources/8x8board.jpg");
                 toReturn = 8;
             }
 
-            else if (radioButton10.Checked)
+            else if (RadioButton10.Checked)
             {
-                //this.Parent.ClientSize = new Size(300, 400);
-                //(this.Parent as MainForm).BoardImage = Image.FromFile("Resources/10x10board.jpg");
                 toReturn = 10;
             }
             return toReturn;
