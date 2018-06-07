@@ -45,7 +45,7 @@ namespace Ex05.Damka
             this.boardSize.AutoSize = true;
             this.boardSize.Location = new System.Drawing.Point(31, 19);
             this.boardSize.Name = "boardSize";
-            this.boardSize.Size = new System.Drawing.Size(154, 32);
+            this.boardSize.Size = new System.Drawing.Size(58, 13);
             this.boardSize.TabIndex = 0;
             this.boardSize.Text = "Board Size";
             this.boardSize.Click += new System.EventHandler(this.boardSize_Click);
@@ -56,7 +56,7 @@ namespace Ex05.Damka
             this.radioButton6.Checked = true;
             this.radioButton6.Location = new System.Drawing.Point(55, 41);
             this.radioButton6.Name = "radioButton6";
-            this.radioButton6.Size = new System.Drawing.Size(112, 36);
+            this.radioButton6.Size = new System.Drawing.Size(48, 17);
             this.radioButton6.TabIndex = 1;
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "6 x 6";
@@ -68,7 +68,7 @@ namespace Ex05.Damka
             this.radioButton8.AutoSize = true;
             this.radioButton8.Location = new System.Drawing.Point(147, 41);
             this.radioButton8.Name = "radioButton8";
-            this.radioButton8.Size = new System.Drawing.Size(112, 36);
+            this.radioButton8.Size = new System.Drawing.Size(48, 17);
             this.radioButton8.TabIndex = 2;
             this.radioButton8.TabStop = true;
             this.radioButton8.Text = "8 x 8";
@@ -80,7 +80,7 @@ namespace Ex05.Damka
             this.radioButton10.AutoSize = true;
             this.radioButton10.Location = new System.Drawing.Point(239, 41);
             this.radioButton10.Name = "radioButton10";
-            this.radioButton10.Size = new System.Drawing.Size(144, 36);
+            this.radioButton10.Size = new System.Drawing.Size(60, 17);
             this.radioButton10.TabIndex = 3;
             this.radioButton10.TabStop = true;
             this.radioButton10.Text = "10 x 10";
@@ -92,7 +92,7 @@ namespace Ex05.Damka
             this.players.AutoSize = true;
             this.players.Location = new System.Drawing.Point(31, 67);
             this.players.Name = "players";
-            this.players.Size = new System.Drawing.Size(118, 32);
+            this.players.Size = new System.Drawing.Size(44, 13);
             this.players.TabIndex = 4;
             this.players.Text = "Players:";
             // 
@@ -101,7 +101,7 @@ namespace Ex05.Damka
             this.playerOne.AutoSize = true;
             this.playerOne.Location = new System.Drawing.Point(52, 94);
             this.playerOne.Name = "playerOne";
-            this.playerOne.Size = new System.Drawing.Size(127, 32);
+            this.playerOne.Size = new System.Drawing.Size(48, 13);
             this.playerOne.TabIndex = 5;
             this.playerOne.Text = "Player 1:";
             this.playerOne.Click += new System.EventHandler(this.playerOne_Click);
@@ -110,7 +110,7 @@ namespace Ex05.Damka
             // 
             this.textBoxPlayerOne.Location = new System.Drawing.Point(147, 91);
             this.textBoxPlayerOne.Name = "textBoxPlayerOne";
-            this.textBoxPlayerOne.Size = new System.Drawing.Size(152, 38);
+            this.textBoxPlayerOne.Size = new System.Drawing.Size(152, 20);
             this.textBoxPlayerOne.TabIndex = 6;
             this.textBoxPlayerOne.TextChanged += new System.EventHandler(this.textBoxPlayerOne_TextChanged);
             // 
@@ -119,7 +119,7 @@ namespace Ex05.Damka
             this.textBoxPlayerTwo.Enabled = false;
             this.textBoxPlayerTwo.Location = new System.Drawing.Point(147, 135);
             this.textBoxPlayerTwo.Name = "textBoxPlayerTwo";
-            this.textBoxPlayerTwo.Size = new System.Drawing.Size(152, 38);
+            this.textBoxPlayerTwo.Size = new System.Drawing.Size(152, 20);
             this.textBoxPlayerTwo.TabIndex = 8;
             this.textBoxPlayerTwo.TextChanged += new System.EventHandler(this.textBoxPlayerTwo_TextChanged);
             // 
@@ -128,7 +128,7 @@ namespace Ex05.Damka
             this.playerTwo.AutoSize = true;
             this.playerTwo.Location = new System.Drawing.Point(33, 135);
             this.playerTwo.Name = "playerTwo";
-            this.playerTwo.Size = new System.Drawing.Size(165, 36);
+            this.playerTwo.Size = new System.Drawing.Size(67, 17);
             this.playerTwo.TabIndex = 9;
             this.playerTwo.Text = "Player 2:";
             this.playerTwo.UseVisualStyleBackColor = true;
@@ -159,6 +159,9 @@ namespace Ex05.Damka
             this.Controls.Add(this.boardSize);
             this.Name = "FormLogin";
             this.Text = "Damka - Start Game";
+            this.StartPosition = FormStartPosition.CenterScreen;
+            this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+            this.Load += new System.EventHandler(this.FormLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -210,6 +213,11 @@ namespace Ex05.Damka
         }
 
         private void buttonDone_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
         {
 
         }
