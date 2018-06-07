@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Program
+namespace Ex05.Ex02.Logic
 {
-    internal class CreateGame : GameRules
+    public class CreateGame : GameRules
     {
         public Piece[] Pieces;
 

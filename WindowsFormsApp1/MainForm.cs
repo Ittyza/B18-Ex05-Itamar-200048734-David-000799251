@@ -87,15 +87,5 @@ namespace Ex05.Damka
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog(); 
         }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void scorePlayer1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

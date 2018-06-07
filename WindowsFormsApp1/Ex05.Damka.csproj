@@ -74,5 +74,11 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Ex02.Logic\Ex05.Ex02.Logic.csproj">
+      <Project>{8c58cb53-9aa5-4c95-8b0e-dc587139a7ab}</Project>
+      <Name>Ex05.Ex02.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

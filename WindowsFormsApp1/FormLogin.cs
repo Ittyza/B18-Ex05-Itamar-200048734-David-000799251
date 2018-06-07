@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Ex05.Ex02.Logic;
 
 namespace Ex05.Damka
 {
@@ -20,6 +21,8 @@ namespace Ex05.Damka
         private CheckBox playerTwo;
         private Button buttonDone;
         private Label boardSize;
+
+        private GameRules m_GameRules;
 
         public FormLogin()
         {
@@ -117,6 +120,7 @@ namespace Ex05.Damka
             // textBoxPlayerTwo
             // 
             this.textBoxPlayerTwo.Enabled = false;
+            this.textBoxPlayerTwo.Text = "Computer";
             this.textBoxPlayerTwo.Location = new System.Drawing.Point(147, 135);
             this.textBoxPlayerTwo.Name = "textBoxPlayerTwo";
             this.textBoxPlayerTwo.Size = new System.Drawing.Size(152, 20);
@@ -169,7 +173,7 @@ namespace Ex05.Damka
 
         private void radioButton8_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void boardSize_Click(object sender, EventArgs e)
@@ -214,12 +218,54 @@ namespace Ex05.Damka
 
         private void buttonDone_Click(object sender, EventArgs e)
         {
+            if (textBoxPlayerOne.Text == string.Empty)
+            {
+                MessageBox.Show("Please add a name for Player One");
+            }
+            else
+            {
+                // m_GameRules.
 
+            }
         }
 
         private void FormLogin_Load(object sender, EventArgs e)
         {
 
+        }
+        private void setGameRules()
+        {
+            Player playerOne = new Player
+            {
+                PlayerName = textBoxPlayerOne.Text,
+                TypeOfPiece = 0
+            };
+            GameRules.PlayerOne = playerOne;
+            GameRules.GameIsOff = false;
+            GameRules.IsPlayerOneGame = true;
+            Console.WriteLine("Please choose a board size between 6,8 or 10.");
+            //GameRules.SizeOfGameBoard = ;
+            Console.WriteLine("Do you want to play against a real person? Please type yes");
+            GameRules.AgainstPlayerTwo = Console.ReadLine().ToLower().Equals("yes");
+            if (GameRules.AgainstPlayerTwo)
+            {
+                Player playerTwo = new Player
+                {
+                    PlayerName = textBoxPlayerTwo.Text,
+                    TypeOfPiece = 1
+                };
+                GameRules.PlayerTwo = playerTwo;
+            }
+            else
+            {
+                Player playerTwo = new Player
+                {
+                    PlayerName = "Computer",
+                    TypeOfPiece = 1,
+                    Score = PlayGame.ScoreOfPlayerTwo
+                };
+                GameRules.PlayerTwo = playerTwo;
+            }
         }
     }
 }

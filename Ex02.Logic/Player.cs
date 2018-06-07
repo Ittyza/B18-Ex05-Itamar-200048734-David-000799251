@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Program
+namespace Ex05.Ex02.Logic
 {
-    internal struct Player
+    public struct Player
     {
         private string playerName;
         private int typeOfPiece;
@@ -14,13 +14,13 @@ namespace Program
         private List<Move> validMoves;
         private int score;
 
-        internal string PlayerName { get => playerName; set => playerName = value; }
+        public string PlayerName { get => playerName; set => playerName = value; }
 
-        internal int TypeOfPiece { get => typeOfPiece; set => typeOfPiece = value; }
+        public int TypeOfPiece { get => typeOfPiece; set => typeOfPiece = value; }
 
         internal List<Move> ValidJumpMoves { get => validJumpMoves; set => validJumpMoves = value; }
 
-        internal int Score { get => score; set => score = value; }
+        public int Score { get => score; set => score = value; }
 
         internal List<Move> ValidMoves { get => validMoves; set => validMoves = value; }
 

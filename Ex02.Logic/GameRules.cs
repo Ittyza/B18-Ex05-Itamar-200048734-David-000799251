@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Program
+namespace Ex05.Ex02.Logic
 {
-    internal class GameRules : UI
+    public class GameRules : UI
     {
         private static Player m_playerOne;
         private static Player m_playerTwo;
@@ -25,8 +25,8 @@ namespace Program
 
         public static bool IsPlayerOneGame { get => isPlayerOneGame; set => isPlayerOneGame = value; }
 
-        internal static Player PlayerOne { get => m_playerOne; set => m_playerOne = value; }
+        public static Player PlayerOne { get => m_playerOne; set => m_playerOne = value; }
 
-        internal static Player PlayerTwo { get => m_playerTwo; set => m_playerTwo = value; }
+        public static Player PlayerTwo { get => m_playerTwo; set => m_playerTwo = value; }
     }
 }

@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Program
+namespace Ex05.Ex02.Logic
 {
-    internal partial class PlayGame : CreateGame
+    public partial class PlayGame : CreateGame
     {
         public Player CurrentPlayer = new Player();
-        internal static int ScoreOfPlayerOne = 0;
-        internal static int ScoreOfPlayerTwo = 0;
+        public static int ScoreOfPlayerOne = 0;
+        public static int ScoreOfPlayerTwo = 0;
 
         internal void RunGame()
         {
@@ -40,7 +40,6 @@ namespace Program
 
                 if (!theUserWantToQuit(inputPositionFromUser))
                 {
-                    Ex02.ConsoleUtils.Screen.Clear();
                     MovePieceFromLetters(inputPositionFromUser);
                     Tools.PrintBoard(GameBoardAsArray);
                     Console.WriteLine("{0}'s move was ({1}): {2}", CurrentPlayer.PlayerName, (eType)CurrentPlayer.TypeOfPiece, inputPositionFromUser);
@@ -64,7 +63,6 @@ namespace Program
             string isYes = Console.ReadLine();
             if (isYes.ToLower().Equals("yes"))
             {
-                Ex02.ConsoleUtils.Screen.Clear();
 
                 new UI().Run();
             }
