@@ -27,6 +27,8 @@ namespace Ex05.Damka
         public RadioButton RadioButton6 { get => radioButton6; set => radioButton6 = value; }
         public RadioButton RadioButton8 { get => radioButton8; set => radioButton8 = value; }
         public RadioButton RadioButton10 { get => radioButton10; set => radioButton10 = value; }
+        public TextBox TextBoxPlayerOne { get => textBoxPlayerOne; set => textBoxPlayerOne = value; }
+        public TextBox TextBoxPlayerTwo { get => textBoxPlayerTwo; set => textBoxPlayerTwo = value; }
 
         public FormLogin()
         {
@@ -41,8 +43,8 @@ namespace Ex05.Damka
             this.radioButton10 = new System.Windows.Forms.RadioButton();
             this.players = new System.Windows.Forms.Label();
             this.playerOne = new System.Windows.Forms.Label();
-            this.textBoxPlayerOne = new System.Windows.Forms.TextBox();
-            this.textBoxPlayerTwo = new System.Windows.Forms.TextBox();
+            this.TextBoxPlayerOne = new System.Windows.Forms.TextBox();
+            this.TextBoxPlayerTwo = new System.Windows.Forms.TextBox();
             this.playerTwo = new System.Windows.Forms.CheckBox();
             this.buttonDone = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -115,21 +117,21 @@ namespace Ex05.Damka
             // 
             // textBoxPlayerOne
             // 
-            this.textBoxPlayerOne.Location = new System.Drawing.Point(147, 91);
-            this.textBoxPlayerOne.Name = "textBoxPlayerOne";
-            this.textBoxPlayerOne.Size = new System.Drawing.Size(152, 20);
-            this.textBoxPlayerOne.TabIndex = 6;
-            this.textBoxPlayerOne.TextChanged += new System.EventHandler(this.textBoxPlayerOne_TextChanged);
+            this.TextBoxPlayerOne.Location = new System.Drawing.Point(147, 91);
+            this.TextBoxPlayerOne.Name = "textBoxPlayerOne";
+            this.TextBoxPlayerOne.Size = new System.Drawing.Size(152, 20);
+            this.TextBoxPlayerOne.TabIndex = 6;
+            this.TextBoxPlayerOne.TextChanged += new System.EventHandler(this.textBoxPlayerOne_TextChanged);
             // 
             // textBoxPlayerTwo
             // 
-            this.textBoxPlayerTwo.Enabled = false;
-            this.textBoxPlayerTwo.Text = "Computer";
-            this.textBoxPlayerTwo.Location = new System.Drawing.Point(147, 135);
-            this.textBoxPlayerTwo.Name = "textBoxPlayerTwo";
-            this.textBoxPlayerTwo.Size = new System.Drawing.Size(152, 20);
-            this.textBoxPlayerTwo.TabIndex = 8;
-            this.textBoxPlayerTwo.TextChanged += new System.EventHandler(this.textBoxPlayerTwo_TextChanged);
+            this.TextBoxPlayerTwo.Enabled = false;
+            this.TextBoxPlayerTwo.Text = "Computer";
+            this.TextBoxPlayerTwo.Location = new System.Drawing.Point(147, 135);
+            this.TextBoxPlayerTwo.Name = "textBoxPlayerTwo";
+            this.TextBoxPlayerTwo.Size = new System.Drawing.Size(152, 20);
+            this.TextBoxPlayerTwo.TabIndex = 8;
+            this.TextBoxPlayerTwo.TextChanged += new System.EventHandler(this.textBoxPlayerTwo_TextChanged);
             // 
             // playerTwo
             // 
@@ -156,9 +158,9 @@ namespace Ex05.Damka
             // 
             this.ClientSize = new System.Drawing.Size(320, 210);
             this.Controls.Add(this.buttonDone);
-            this.Controls.Add(this.textBoxPlayerTwo);
+            this.Controls.Add(this.TextBoxPlayerTwo);
             this.Controls.Add(this.playerTwo);
-            this.Controls.Add(this.textBoxPlayerOne);
+            this.Controls.Add(this.TextBoxPlayerOne);
             this.Controls.Add(this.playerOne);
             this.Controls.Add(this.players);
             this.Controls.Add(this.radioButton10);
@@ -217,14 +219,14 @@ namespace Ex05.Damka
 
         private void playerTwo_CheckedChanged(object sender, EventArgs e)
         {
-            if (textBoxPlayerTwo.Enabled == false)
+            if (TextBoxPlayerTwo.Enabled == false)
             {
-                textBoxPlayerTwo.Enabled = true;
-                textBoxPlayerTwo.Text = string.Empty;
+                TextBoxPlayerTwo.Enabled = true;
+                TextBoxPlayerTwo.Text = string.Empty;
             } else
             {
-                textBoxPlayerTwo.Enabled = false;
-                textBoxPlayerTwo.Text = "Computer";
+                TextBoxPlayerTwo.Enabled = false;
+                TextBoxPlayerTwo.Text = "Computer";
             }
         }
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
@@ -248,7 +250,7 @@ namespace Ex05.Damka
 
         private void buttonDone_Click(object sender, EventArgs e)
         {
-            if (textBoxPlayerOne.Text == string.Empty)
+            if (TextBoxPlayerOne.Text == string.Empty)
             {
                 MessageBox.Show("Please add a name for Player One");
             }
@@ -268,19 +270,19 @@ namespace Ex05.Damka
         {
             Player playerOne = new Player
             {
-                PlayerName = textBoxPlayerOne.Text,
+                PlayerName = TextBoxPlayerOne.Text,
                 TypeOfPiece = 0
             };
             GameRules.PlayerOne = playerOne;
             GameRules.GameIsOff = false;
             GameRules.IsPlayerOneGame = true;
             GameRules.SizeOfGameBoard = getSizeOfBoard();
-            GameRules.AgainstPlayerTwo = textBoxPlayerTwo.Enabled;
+            GameRules.AgainstPlayerTwo = TextBoxPlayerTwo.Enabled;
             if (GameRules.AgainstPlayerTwo)
             {
                 Player playerTwo = new Player
                 {
-                    PlayerName = textBoxPlayerTwo.Text,
+                    PlayerName = TextBoxPlayerTwo.Text,
                     TypeOfPiece = 1
                 };
                 GameRules.PlayerTwo = playerTwo;
