@@ -16,11 +16,11 @@ namespace Ex05.Damka
         private Label scorePlayer2;
         private Label playerTwo;
         private Label playerOne;
-        private PictureBox gameBoard;
         private Image boardImage;
         private Image redPiece;
         private Image redKing;
         private Image blackPiece;
+        private PictureBox gameBoard;
         private Image blackKing;
 
 
@@ -35,12 +35,12 @@ namespace Ex05.Damka
 
         private void InitializeComponent()
         {
-            this.gameBoard = new PictureBox();
+            //this.gameBoard = new System.Windows.Forms.PictureBox();
             this.playerOne = new System.Windows.Forms.Label();
             this.scorePlayer1 = new System.Windows.Forms.Label();
             this.scorePlayer2 = new System.Windows.Forms.Label();
             this.playerTwo = new System.Windows.Forms.Label();
-            //this.Icon = new Icon("Resources/DamkaIcon.ico");
+            this.gameBoard = new PictureBox();
             this.SuspendLayout();
             // 
             // playerOne
@@ -79,17 +79,26 @@ namespace Ex05.Damka
             this.playerTwo.TabIndex = 2;
             this.playerTwo.Text = "Player 2:";
             // 
+            // pictureBox1
+            // 
+            this.GameBoard.Location = new System.Drawing.Point(24, 102);
+            this.GameBoard.Name = "pictureBox1";
+            this.GameBoard.Size = new System.Drawing.Size(500, 407);
+            this.GameBoard.TabIndex = 4;
+            this.GameBoard.TabStop = false;
+            // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(561, 591);
+            this.Controls.Add(this.GameBoard);
             this.Controls.Add(this.scorePlayer2);
             this.Controls.Add(this.playerTwo);
             this.Controls.Add(this.scorePlayer1);
             this.Controls.Add(this.playerOne);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Damka";
-            this.StartPosition = FormStartPosition.CenterScreen;
-            this.Load += new EventHandler(this.MainForm_Load);
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -98,6 +107,7 @@ namespace Ex05.Damka
         private void MainForm_Load(object sender, EventArgs e)
         {
             FormLogin formLogin = new FormLogin();
+            formLogin.Owner = this;
             formLogin.ShowDialog(); 
         }
 
