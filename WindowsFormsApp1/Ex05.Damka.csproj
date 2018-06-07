@@ -77,5 +77,15 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\10x10board.jpg" />
+    <Content Include="Resources\6x6board.jpg" />
+    <Content Include="Resources\8x8board.jpg" />
+    <Content Include="Resources\BlackPiece.jpg" />
+    <Content Include="Resources\KBlack.jpg" />
+    <Content Include="Resources\KRed.jpg" />
+    <Content Include="Resources\RedPiece.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
