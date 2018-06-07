@@ -21,8 +21,7 @@ namespace Ex05.Damka
         private CheckBox playerTwo;
         private Button buttonDone;
         private Label boardSize;
-
-        private GameRules m_GameRules;
+        private MainForm mainForm;
 
         public RadioButton RadioButton6 { get => radioButton6; set => radioButton6 = value; }
         public RadioButton RadioButton8 { get => radioButton8; set => radioButton8 = value; }
@@ -37,16 +36,16 @@ namespace Ex05.Damka
 
         private void InitializeComponent()
         {
-            this.boardSize = new System.Windows.Forms.Label();
-            this.radioButton6 = new System.Windows.Forms.RadioButton();
-            this.radioButton8 = new System.Windows.Forms.RadioButton();
-            this.radioButton10 = new System.Windows.Forms.RadioButton();
-            this.players = new System.Windows.Forms.Label();
-            this.playerOne = new System.Windows.Forms.Label();
-            this.TextBoxPlayerOne = new System.Windows.Forms.TextBox();
-            this.TextBoxPlayerTwo = new System.Windows.Forms.TextBox();
-            this.playerTwo = new System.Windows.Forms.CheckBox();
-            this.buttonDone = new System.Windows.Forms.Button();
+            this.boardSize = new Label();
+            this.radioButton6 = new RadioButton();
+            this.radioButton8 = new RadioButton();
+            this.radioButton10 = new RadioButton();
+            this.players = new Label();
+            this.playerOne = new Label();
+            this.TextBoxPlayerOne = new TextBox();
+            this.TextBoxPlayerTwo = new TextBox();
+            this.playerTwo = new CheckBox();
+            this.buttonDone = new Button();
             this.SuspendLayout();
             // 
             // boardSize
@@ -57,7 +56,6 @@ namespace Ex05.Damka
             this.boardSize.Size = new System.Drawing.Size(58, 13);
             this.boardSize.TabIndex = 0;
             this.boardSize.Text = "Board Size";
-            this.boardSize.Click += new System.EventHandler(this.boardSize_Click);
             // 
             // radioButton6
             // 
@@ -70,7 +68,6 @@ namespace Ex05.Damka
             this.radioButton6.TabStop = true;
             this.radioButton6.Text = "6 x 6";
             this.radioButton6.UseVisualStyleBackColor = true;
-            this.radioButton6.CheckedChanged += new System.EventHandler(this.radioButton6_CheckedChanged);
             // 
             // radioButton8
             // 
@@ -82,7 +79,6 @@ namespace Ex05.Damka
             this.radioButton8.TabStop = true;
             this.radioButton8.Text = "8 x 8";
             this.radioButton8.UseVisualStyleBackColor = true;
-            this.radioButton8.CheckedChanged += new System.EventHandler(this.radioButton8_CheckedChanged);
             // 
             // radioButton10
             // 
@@ -94,7 +90,6 @@ namespace Ex05.Damka
             this.radioButton10.TabStop = true;
             this.radioButton10.Text = "10 x 10";
             this.radioButton10.UseVisualStyleBackColor = true;
-            this.radioButton10.CheckedChanged += new System.EventHandler(this.radioButton10_CheckedChanged);
             // 
             // players
             // 
@@ -113,7 +108,6 @@ namespace Ex05.Damka
             this.playerOne.Size = new System.Drawing.Size(48, 13);
             this.playerOne.TabIndex = 5;
             this.playerOne.Text = "Player 1:";
-            this.playerOne.Click += new System.EventHandler(this.playerOne_Click);
             // 
             // textBoxPlayerOne
             // 
@@ -121,7 +115,6 @@ namespace Ex05.Damka
             this.TextBoxPlayerOne.Name = "textBoxPlayerOne";
             this.TextBoxPlayerOne.Size = new System.Drawing.Size(152, 20);
             this.TextBoxPlayerOne.TabIndex = 6;
-            this.TextBoxPlayerOne.TextChanged += new System.EventHandler(this.textBoxPlayerOne_TextChanged);
             // 
             // textBoxPlayerTwo
             // 
@@ -131,7 +124,6 @@ namespace Ex05.Damka
             this.TextBoxPlayerTwo.Name = "textBoxPlayerTwo";
             this.TextBoxPlayerTwo.Size = new System.Drawing.Size(152, 20);
             this.TextBoxPlayerTwo.TabIndex = 8;
-            this.TextBoxPlayerTwo.TextChanged += new System.EventHandler(this.textBoxPlayerTwo_TextChanged);
             // 
             // playerTwo
             // 
@@ -177,53 +169,14 @@ namespace Ex05.Damka
 
         }
 
-        private void radioButton8_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void boardSize_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton10_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton6_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void playerOne_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPlayerOne_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void playerTwo_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxPlayerTwo_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void playerTwo_CheckedChanged(object sender, EventArgs e)
         {
             if (TextBoxPlayerTwo.Enabled == false)
             {
                 TextBoxPlayerTwo.Enabled = true;
                 TextBoxPlayerTwo.Text = string.Empty;
-            } else
+            }
+            else
             {
                 TextBoxPlayerTwo.Enabled = false;
                 TextBoxPlayerTwo.Text = "Computer";
@@ -258,14 +211,30 @@ namespace Ex05.Damka
             {
                 setGameRules();
                 Close();
+                setSizeOfBoard();
+
 
             }
         }
-
-        private void FormLogin_Load(object sender, EventArgs e)
+        private void setSizeOfBoard()
         {
-
+            mainForm = new MainForm();
+            switch (GameRules.SizeOfGameBoard)
+            {
+                case 6:
+                    mainForm.GameBoard.Image = WindowsFormsApp1.Properties.Resources._6x6board;
+                    break;
+                case 8:
+                    mainForm.GameBoard.Image = WindowsFormsApp1.Properties.Resources._8x8board;
+                    break;
+                case 10:
+                    mainForm.GameBoard.Image = WindowsFormsApp1.Properties.Resources._10x10board;
+                    break;
+            }
+            mainForm.ClientSize = new Size(mainForm.GameBoard.Image.Width + 24, mainForm.GameBoard.Image.Height + 36 + this.playerOne.Height);
+            mainForm.ShowDialog();
         }
+
         private void setGameRules()
         {
             Player playerOne = new Player

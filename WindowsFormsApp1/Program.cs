@@ -12,8 +12,8 @@ namespace WindowsFormsApp1
         public static void Main()
         {
             
-            MainForm mainForm = new MainForm();
-            mainForm.ShowDialog();
+            FormLogin formLogin = new FormLogin();
+            formLogin.ShowDialog();
         }
     }
 }

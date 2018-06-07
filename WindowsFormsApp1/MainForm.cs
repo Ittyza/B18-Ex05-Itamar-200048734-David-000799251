@@ -17,24 +17,22 @@ namespace Ex05.Damka
         private Label scorePlayer2;
         private Label playerTwo;
         private Label playerOne;
-        private Image boardImage;
-        private Image redPiece;
-        private Image redKing;
-        private Image blackPiece;
+        private PictureBox redPiece;
+        private PictureBox redKing;
+        private PictureBox blackPiece;
         private PictureBox gameBoard;
-        private Image blackKing;
+        private PictureBox blackKing;
         private FormLogin formLogin = new FormLogin();
-        private GameRules m_GameRules = new GameRules();
 
         public MainForm()
         {
             InitializeComponent();
+            InitiateImages();
         }
 
         public PictureBox GameBoard { get => gameBoard; set => gameBoard = value; }
         public Image BoardImage { get => BoardImage; set => BoardImage = value; }
-        public GameRules GameRules { get => m_GameRules; set => m_GameRules = value; }
-
+        
         private void InitializeComponent()
         {
             this.playerOne = new Label();
@@ -44,14 +42,12 @@ namespace Ex05.Damka
             this.gameBoard = new PictureBox();
             this.SuspendLayout();
 
-            //Creates Board size
-            setSizeOfBoard();
+
             // 
             // playerOne
             // 
             this.playerOne.AutoSize = true;
             this.playerOne.Text = GameRules.PlayerOne.PlayerName;
-            this.playerOne.BackColor = Color.Cyan;
             this.playerOne.Top = 12;
             this.playerOne.Left = 12;
             this.playerOne.Name = "playerOne";
@@ -59,7 +55,6 @@ namespace Ex05.Damka
             // scorePlayer1
             // 
             this.scorePlayer1.AutoSize = true;
-            this.scorePlayer1.BackColor = Color.Yellow;
             this.scorePlayer1.Top = 12;
             this.scorePlayer1.Left = this.playerOne.Right + 12;
             this.scorePlayer1.Name = "scorePlayer1";
@@ -69,14 +64,13 @@ namespace Ex05.Damka
             // 
             this.gameBoard.Left = 12;
             this.gameBoard.Top = this.playerOne.Bottom + 12;
-            this.gameBoard.Size = this.gameBoard.Image.Size;
             this.gameBoard.Name = "gameBoard";
+            this.gameBoard.SizeMode = PictureBoxSizeMode.AutoSize;
             // 
             // playerTwo
             // 
             this.playerTwo.AutoSize = true;
             this.playerTwo.Top = 12;
-            this.playerTwo.BackColor = Color.Green;
             this.playerTwo.Left = ClientSize.Width - 24 - this.playerTwo.Width;
             this.playerTwo.Name = "playerTwo";
             this.playerTwo.Size = new System.Drawing.Size(48, 13);
@@ -102,46 +96,33 @@ namespace Ex05.Damka
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Damka";
-            this.Load += new System.EventHandler(this.MainForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.gameBoard)).EndInit();
+
+
+
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            formLogin.Owner = this;
-            formLogin.ShowDialog();
-        }
-
         private void InitiateImages()
         {
-
-            redPiece = Image.FromFile("Resources/RedPiece.jpg");
-            redKing = Image.FromFile("Resources/KRed.jpg");
-            blackPiece = Image.FromFile("Resources/BlackPiece.jpg");
-            blackKing = Image.FromFile("Resources/KBlack.jpg");
+            this.redPiece = new PictureBox();
+            this.redKing = new PictureBox();
+            this.blackPiece = new PictureBox();
+            this.blackKing = new PictureBox();
+            this.redPiece.Image = global::WindowsFormsApp1.Properties.Resources.RedPiece;
+            this.redPiece.SizeMode = PictureBoxSizeMode.AutoSize;
+            this.redKing.Image = global::WindowsFormsApp1.Properties.Resources.KRed;
+            this.redKing.SizeMode = PictureBoxSizeMode.AutoSize;
+            this.blackPiece.Image = global::WindowsFormsApp1.Properties.Resources.BlackPiece;
+            this.blackPiece.SizeMode = PictureBoxSizeMode.AutoSize;
+            this.blackKing.Image = global::WindowsFormsApp1.Properties.Resources.KBlack;
+            this.blackKing.SizeMode = PictureBoxSizeMode.AutoSize;
+            this.blackKing.Left = playerTwo.Left +24;
+            this.redPiece.Left = playerOne.Left + 24;
+            this.Controls.Add(redPiece);
+            this.Controls.Add(blackPiece);
         }
-        private void setSizeOfBoard()
-        {
-            // THis is always true for some reason - Will always load 6x6 board
-            if (formLogin.RadioButton6.Checked)
-            {
-                this.GameBoard.Image = global::WindowsFormsApp1.Properties.Resources._6x6board;
-            }
-
-            else if (formLogin.RadioButton8.Checked)
-            {
-                this.GameBoard.Image = global::WindowsFormsApp1.Properties.Resources._8x8board;
-            }
-
-            else if (formLogin.RadioButton10.Checked)
-            {
-                this.GameBoard.Image = global::WindowsFormsApp1.Properties.Resources._10x10board;
-            }
-
-            this.ClientSize = new Size(gameBoard.Image.Width + 24, gameBoard.Image.Height + 36 + this.playerOne.Height);
-        }
+        
     }
 }

@@ -110,5 +110,8 @@
   <ItemGroup>
     <None Include="Resources\RedPiece.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\DamkaIcon.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
