@@ -136,7 +136,7 @@ namespace Ex05.Damka
             this.playerTwo.TabIndex = 9;
             this.playerTwo.Text = "Player 2:";
             this.playerTwo.UseVisualStyleBackColor = true;
-            this.playerTwo.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.playerTwo.CheckedChanged += new System.EventHandler(this.playerTwo_CheckedChanged);
             // 
             // buttonDone
             // 
@@ -166,6 +166,7 @@ namespace Ex05.Damka
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
             this.Load += new System.EventHandler(this.FormLogin_Load);
+            this.FormClosing += new FormClosingEventHandler(this.FormLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,9 +212,35 @@ namespace Ex05.Damka
 
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        private void playerTwo_CheckedChanged(object sender, EventArgs e)
         {
+            if (textBoxPlayerTwo.Enabled == false)
+            {
+                textBoxPlayerTwo.Enabled = true;
+                textBoxPlayerTwo.Text = string.Empty;
+            } else
+            {
+                textBoxPlayerTwo.Enabled = false;
+                textBoxPlayerTwo.Text = "Computer";
+            }
+        }
+        private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (e.CloseReason == CloseReason.WindowsShutDown) return;
 
+            if (this.DialogResult == DialogResult.Cancel)
+            {
+                switch (MessageBox.Show(this, "Are you sure?", "Do you want to close ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    case DialogResult.No:
+                        e.Cancel = true;
+                        break;
+                    case DialogResult.Yes:
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         private void buttonDone_Click(object sender, EventArgs e)
@@ -224,7 +251,7 @@ namespace Ex05.Damka
             }
             else
             {
-                // m_GameRules.
+                setGameRules();
 
             }
         }
@@ -243,10 +270,8 @@ namespace Ex05.Damka
             GameRules.PlayerOne = playerOne;
             GameRules.GameIsOff = false;
             GameRules.IsPlayerOneGame = true;
-            Console.WriteLine("Please choose a board size between 6,8 or 10.");
             //GameRules.SizeOfGameBoard = ;
-            Console.WriteLine("Do you want to play against a real person? Please type yes");
-            GameRules.AgainstPlayerTwo = Console.ReadLine().ToLower().Equals("yes");
+            //GameRules.AgainstPlayerTwo = che;
             if (GameRules.AgainstPlayerTwo)
             {
                 Player playerTwo = new Player
