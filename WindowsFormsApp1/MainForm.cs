@@ -16,6 +16,7 @@ namespace Ex05.Damka
         private Label scorePlayer2;
         private Label playerTwo;
         private Label playerOne;
+        
 
         public MainForm()
         {
@@ -28,6 +29,7 @@ namespace Ex05.Damka
             this.scorePlayer1 = new System.Windows.Forms.Label();
             this.scorePlayer2 = new System.Windows.Forms.Label();
             this.playerTwo = new System.Windows.Forms.Label();
+            this.Icon = new Icon("Resources/DamkaIcon.ico");
             this.SuspendLayout();
             // 
             // playerOne
