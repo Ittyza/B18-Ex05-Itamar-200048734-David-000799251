@@ -298,7 +298,7 @@ namespace Ex05.Damka
             int toReturn = 0;
             if (radioButton6.Checked)
             {
-                this.Parent.ClientSize = new Size(300,400);
+                (this.Parent as MainForm).ClientSize = new Size(300,400);
                 (this.Parent as MainForm).BoardImage = Image.FromFile("Resources/6x6board.jpg");
                 toReturn = 6;
             }
