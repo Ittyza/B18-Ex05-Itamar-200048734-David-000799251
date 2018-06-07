@@ -165,8 +165,7 @@ namespace Ex05.Damka
             this.Text = "Damka - Start Game";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            this.Load += new System.EventHandler(this.FormLogin_Load);
-            this.FormClosing += new FormClosingEventHandler(this.FormLogin_FormClosing);
+            //this.FormClosing += new FormClosingEventHandler(this.FormLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -252,6 +251,7 @@ namespace Ex05.Damka
             else
             {
                 setGameRules();
+                Close();
 
             }
         }
@@ -270,7 +270,7 @@ namespace Ex05.Damka
             GameRules.PlayerOne = playerOne;
             GameRules.GameIsOff = false;
             GameRules.IsPlayerOneGame = true;
-            //GameRules.SizeOfGameBoard = ;
+            GameRules.SizeOfGameBoard = getSizeOfBoard();
             //GameRules.AgainstPlayerTwo = che;
             if (GameRules.AgainstPlayerTwo)
             {
