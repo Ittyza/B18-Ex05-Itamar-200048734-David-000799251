@@ -298,16 +298,22 @@ namespace Ex05.Damka
             int toReturn = 0;
             if (radioButton6.Checked)
             {
+                this.Parent.ClientSize = new Size(300,400);
+                (this.Parent as MainForm).BoardImage = Image.FromFile("Resources/6x6board.jpg");
                 toReturn = 6;
             }
 
             else if (radioButton8.Checked)
             {
+                this.Parent.ClientSize = new Size(300, 400);
+                (this.Parent as MainForm).BoardImage = Image.FromFile("Resources/8x8board.jpg");
                 toReturn = 8;
             }
 
             else if (radioButton10.Checked)
             {
+                this.Parent.ClientSize = new Size(300, 400);
+                (this.Parent as MainForm).BoardImage = Image.FromFile("Resources/10x10board.jpg");
                 toReturn = 10;
             }
             return toReturn;

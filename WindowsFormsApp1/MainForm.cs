@@ -16,20 +16,31 @@ namespace Ex05.Damka
         private Label scorePlayer2;
         private Label playerTwo;
         private Label playerOne;
-        
+        private PictureBox gameBoard;
+        private Image boardImage;
+        private Image redPiece;
+        private Image redKing;
+        private Image blackPiece;
+        private Image blackKing;
+
+
 
         public MainForm()
         {
             InitializeComponent();
         }
 
+        public PictureBox GameBoard { get => gameBoard; set => gameBoard = value; }
+        public Image BoardImage { get => BoardImage; set => BoardImage = value; }
+
         private void InitializeComponent()
         {
+            this.gameBoard = new PictureBox();
             this.playerOne = new System.Windows.Forms.Label();
             this.scorePlayer1 = new System.Windows.Forms.Label();
             this.scorePlayer2 = new System.Windows.Forms.Label();
             this.playerTwo = new System.Windows.Forms.Label();
-            this.Icon = new Icon("Resources/DamkaIcon.ico");
+            //this.Icon = new Icon("Resources/DamkaIcon.ico");
             this.SuspendLayout();
             // 
             // playerOne
@@ -88,6 +99,15 @@ namespace Ex05.Damka
         {
             FormLogin formLogin = new FormLogin();
             formLogin.ShowDialog(); 
+        }
+
+        private void InitiateImages()
+        {
+
+            redPiece = Image.FromFile("Resources/RedPiece.jpg");
+            redKing = Image.FromFile("Resources/KRed.jpg");
+            blackPiece = Image.FromFile("Resources/BlackPiece.jpg");
+            blackKing = Image.FromFile("Resources/KBlack.jpg");
         }
     }
 }
