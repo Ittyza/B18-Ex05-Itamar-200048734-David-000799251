@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Program
+namespace Ex05.Ex02.Logic
 {
-    internal class Piece
+    public class Piece
     {
         private int m_type;
         private Position positionOfPiece;
@@ -19,7 +19,7 @@ namespace Program
         internal Position PositionOfPiece { get => this.positionOfPiece; set => this.positionOfPiece = value; }
     }
 
-    internal struct Position
+    public struct Position
     {
         public Position(int rowPosition, int columnPosition)
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 // $G$ RUL-004 (-20) Wrong zip name format / folder name format
 // $G$ RUL-003 (-20) No submission report attached to the solution
 
-namespace Program
+namespace Ex05.Ex02.Logic
 {
     public class Program
     {

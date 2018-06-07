@@ -1,21 +1,20 @@
 ﻿using System;
 using System.Text;
 
-namespace Program
+namespace Ex05.Ex02.Logic
 {
-    internal class UI
+    public class UI
     {
         internal void Run()
         {
             setGameRules();
             PlayGame newGame = new PlayGame();
-            Ex02.ConsoleUtils.Screen.Clear();
             Tools.PrintBoard(newGame.GameBoardAsArray);
             Player.SetPlayer(ref newGame.CurrentPlayer);
             newGame.RunGame();
             Console.ReadLine();          
         }
-        
+
         private void setGameRules()
         {
             Player playerOne = new Player
@@ -45,7 +44,7 @@ namespace Program
                 {
                     PlayerName = "Computer",
                     TypeOfPiece = 1,
-                    Score = PlayGame.ScoreOfPlayerTwo  
+                    Score = PlayGame.ScoreOfPlayerTwo
                 };
                 GameRules.PlayerTwo = playerTwo;
             }
