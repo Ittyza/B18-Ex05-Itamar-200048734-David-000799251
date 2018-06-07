@@ -81,16 +81,16 @@ namespace Ex05.Damka
             // 
             // pictureBox1
             // 
-            this.GameBoard.Location = new System.Drawing.Point(24, 102);
-            this.GameBoard.Name = "pictureBox1";
-            this.GameBoard.Size = new System.Drawing.Size(500, 407);
-            this.GameBoard.TabIndex = 4;
-            this.GameBoard.TabStop = false;
+            this.gameBoard.Location = new System.Drawing.Point(24, 102);
+            this.gameBoard.Name = "pictureBox1";
+            this.gameBoard.Size = new System.Drawing.Size(500, 407);
+            this.gameBoard.TabIndex = 4;
+            this.gameBoard.TabStop = false;
             // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(561, 591);
-            this.Controls.Add(this.GameBoard);
+            this.Controls.Add(this.gameBoard);
             this.Controls.Add(this.scorePlayer2);
             this.Controls.Add(this.playerTwo);
             this.Controls.Add(this.scorePlayer1);
