@@ -114,6 +114,9 @@ namespace Ex05.Damka
             this.TextBoxPlayerOne.Name = "textBoxPlayerOne";
             this.TextBoxPlayerOne.Size = new System.Drawing.Size(152, 20);
             this.TextBoxPlayerOne.TabIndex = 6;
+            // TO ERASE FOR SUBMITTING
+            this.textBoxPlayerOne.Text = "dav";
+
             // 
             // textBoxPlayerTwo
             // 

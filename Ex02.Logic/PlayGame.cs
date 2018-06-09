@@ -23,7 +23,7 @@ namespace Ex05.Ex02.Logic
 
                 if (CurrentPlayer.ValidMoves.Count == 0 && CurrentPlayer.ValidJumpMoves.Count == 0)
                 {
-                    this.AggregateScore();
+                    this.aggregateScore();
                     Console.WriteLine("No valid moves, do you want to play again? Please type yes");
                     finishGame();
                 }
@@ -82,7 +82,7 @@ namespace Ex05.Ex02.Logic
             Position oldPosition = new Position(oldPositionOfPieceRow, oldPositionOfPieceColumn);
             Position newPosition = new Position(newPositionOfPieceRow, newPositionOfPieceColumn);
             Move move = new Move(oldPosition, newPosition);
-            MovePiece(move);
+            //MovePiece(move);
         }
 
         private Move getAIMoves()
@@ -119,7 +119,6 @@ namespace Ex05.Ex02.Logic
                 Piece pieceToMove = null;
 
                 int index = 0;
-
                 for (int i = 0; i < Pieces.Length; i++)
                 {
                     if (Pieces[i].PositionOfPiece.RowPosition == startPosition.RowPosition &&
@@ -135,36 +134,66 @@ namespace Ex05.Ex02.Logic
                 {
                     MessageBox.Show("Invalid Piece");
                 }
-                else if (GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] != '\0')
+
+
+
+
+                if (GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] != '\0')
                 {
                     MessageBox.Show("THERE'S A PIECE ON THAT SQUARE");
                 }
                 else
+
                 {
+
                     if (!(CurrentPlayer.ValidMoves.Count == 0))
+
                     {
+
                         Pieces[index].PositionOfPiece = endPosition;
+
                         GameBoardAsArray[startPosition.RowPosition, startPosition.ColumnPosition] = '\0';
+
                         if (IsPlayerOneGame && endPosition.RowPosition == 0)
+
                         {
+
                             GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = 'K';
+
                             Pieces[index].Type = 2;
-                        }
-                        else if (!IsPlayerOneGame && endPosition.RowPosition == SizeOfGameBoard - 1)
-                        {
-                            GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = 'U';
-                            Pieces[index].Type = 3;
-                        }
-                        else
-                        {
-                            GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = char.Parse(((eType)pieceToMove.Type).ToString());
+
                         }
 
+                        else if (!IsPlayerOneGame && endPosition.RowPosition == SizeOfGameBoard - 1)
+
+                        {
+
+                            GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = 'U';
+
+                            Pieces[index].Type = 3;
+
+                        }
+
+                        else
+
+                        {
+
+                            GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = char.Parse(((eType)pieceToMove.Type).ToString());
+
+                        }
+
+
+
                         Player.changeCurrentPlayer(ref CurrentPlayer);
+
                     }
+
                     else
+
                     {
-                        MessageBox.Show("Not a valid end position");
+
+                        Console.WriteLine("Not a valid end position");
+
                     }
                 }
             }
@@ -190,8 +219,7 @@ namespace Ex05.Ex02.Logic
             }
         }
 
-        // $G$ CSS-999 (-3) private method name shouldn't start with capital letter.
-        private void AggregateScore()
+        private void aggregateScore()
         {
             ScoreOfPlayerOne = 0;
             ScoreOfPlayerTwo = 0;
@@ -309,23 +337,22 @@ namespace Ex05.Ex02.Logic
             }
         }
 
-        // $G$ CSS-013 (-3) Input parameters names should start with i_.
-        private void attemptAddingDownRightJumpMove(Piece piece)
+        private void attemptAddingDownRightJumpMove(Piece i_Piece)
         {
-            if (piece.Type % 2 == 0)
+            if (i_Piece.Type % 2 == 0)
             {
                 try
                 {
-                    if (GameBoardAsArray[piece.PositionOfPiece.RowPosition + 2,
-                        piece.PositionOfPiece.ColumnPosition + 2] == '\0' &&
-                        (GameBoardAsArray[piece.PositionOfPiece.RowPosition + 1,
-                        piece.PositionOfPiece.ColumnPosition + 1] == 'O' ||
-                        GameBoardAsArray[piece.PositionOfPiece.RowPosition + 1,
-                        piece.PositionOfPiece.ColumnPosition + 1] == 'U'))
+                    if (GameBoardAsArray[i_Piece.PositionOfPiece.RowPosition + 2,
+                        i_Piece.PositionOfPiece.ColumnPosition + 2] == '\0' &&
+                        (GameBoardAsArray[i_Piece.PositionOfPiece.RowPosition + 1,
+                        i_Piece.PositionOfPiece.ColumnPosition + 1] == 'O' ||
+                        GameBoardAsArray[i_Piece.PositionOfPiece.RowPosition + 1,
+                        i_Piece.PositionOfPiece.ColumnPosition + 1] == 'U'))
                     {
-                        Position oldPosition = new Position(piece.PositionOfPiece.RowPosition, piece.PositionOfPiece.ColumnPosition);
+                        Position oldPosition = new Position(i_Piece.PositionOfPiece.RowPosition, i_Piece.PositionOfPiece.ColumnPosition);
 
-                        Position endPosition = new Position(piece.PositionOfPiece.RowPosition + 2, piece.PositionOfPiece.ColumnPosition + 2);
+                        Position endPosition = new Position(i_Piece.PositionOfPiece.RowPosition + 2, i_Piece.PositionOfPiece.ColumnPosition + 2);
 
                         Move newUpRightJump = new Move(oldPosition, endPosition);
 
@@ -337,20 +364,20 @@ namespace Ex05.Ex02.Logic
                 }
             }
 
-            if (piece.Type % 2 == 1)
+            if (i_Piece.Type % 2 == 1)
             {
                 try
                 {
-                    if (GameBoardAsArray[piece.PositionOfPiece.RowPosition + 2,
-                        piece.PositionOfPiece.ColumnPosition + 2] == '\0' &&
-                        (GameBoardAsArray[piece.PositionOfPiece.RowPosition + 1,
-                        piece.PositionOfPiece.ColumnPosition + 1] == 'X' ||
-                        GameBoardAsArray[piece.PositionOfPiece.RowPosition + 1,
-                        piece.PositionOfPiece.ColumnPosition + 1] == 'K'))
+                    if (GameBoardAsArray[i_Piece.PositionOfPiece.RowPosition + 2,
+                        i_Piece.PositionOfPiece.ColumnPosition + 2] == '\0' &&
+                        (GameBoardAsArray[i_Piece.PositionOfPiece.RowPosition + 1,
+                        i_Piece.PositionOfPiece.ColumnPosition + 1] == 'X' ||
+                        GameBoardAsArray[i_Piece.PositionOfPiece.RowPosition + 1,
+                        i_Piece.PositionOfPiece.ColumnPosition + 1] == 'K'))
                     {
-                        Position oldPosition = new Position(piece.PositionOfPiece.RowPosition, piece.PositionOfPiece.ColumnPosition);
+                        Position oldPosition = new Position(i_Piece.PositionOfPiece.RowPosition, i_Piece.PositionOfPiece.ColumnPosition);
 
-                        Position endPosition = new Position(piece.PositionOfPiece.RowPosition + 2, piece.PositionOfPiece.ColumnPosition + 2);
+                        Position endPosition = new Position(i_Piece.PositionOfPiece.RowPosition + 2, i_Piece.PositionOfPiece.ColumnPosition + 2);
 
                         Move newUpRightJump = new Move(oldPosition, endPosition);
 
@@ -603,7 +630,7 @@ namespace Ex05.Ex02.Logic
         private bool theUserWantToQuit(string i_InputPositionFromUser)
         {
             bool result = false;
-            AggregateScore();
+            aggregateScore();
             if (i_InputPositionFromUser.Equals('Q'.ToString()))
             {
                 bool isPlayerOneWinning = ScoreOfPlayerOne > ScoreOfPlayerTwo ? true : false;

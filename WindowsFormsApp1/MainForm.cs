@@ -21,7 +21,7 @@ namespace Ex05.Damka
         private PictureBox blackKing;
         private Button[,] buttonBoard;
         private bool m_ValidMove = false;
-        private CreateGame createGame;
+        PlayGame playGame;
         Button currentButtonToMove;
 
         public MainForm()
@@ -37,7 +37,7 @@ namespace Ex05.Damka
             this.playerOne = new Label();
             this.playerTwo = new Label();
             this.buttonBoard = new Button[GameRules.SizeOfGameBoard, GameRules.SizeOfGameBoard];
-            this.createGame = new CreateGame();
+            this.playGame = new PlayGame();
             this.SuspendLayout();
             // 
             // playerOne
@@ -63,13 +63,12 @@ namespace Ex05.Damka
             this.Name = "MainForm";
             this.Text = "Damka";
             this.ClientSize = new Size((GameRules.SizeOfGameBoard * GameRules.SizeOfGameBoard) + 100, (GameRules.SizeOfGameBoard * GameRules.SizeOfGameBoard) + 110);
-
             this.AutoSize = true;
 
-            int startX = playerOne.Left;
-            int startY = playerOne.Height + 12;
-            int currentX;
-            int currentY;
+            int xStartValue = playerOne.Left;
+            int yStartValue = playerOne.Height + 12;
+            int xCurrentValue;
+            int yCyrrentValue;
 
             for (int row = 0; row < GameRules.SizeOfGameBoard; row++)
             {
@@ -77,13 +76,17 @@ namespace Ex05.Damka
                 {
                     buttonBoard[row, col] = new Button();
                     buttonBoard[row, col].Size = new Size(40, 40);
-                    currentX = startX + (row * 40);
-                    currentY = startY + (col * 40);
-                    buttonBoard[row, col].Location = new Point(currentX, currentY);
+                    xCurrentValue = xStartValue + (row * 40);
+                    yCyrrentValue = yStartValue + (col * 40);
+                    buttonBoard[row, col].Location = new Point(xCurrentValue, yCyrrentValue);
                     if (((col + row) % 2) == 0)
                     {
                         buttonBoard[row, col].BackColor = Color.DarkGray;
                         buttonBoard[row, col].Enabled = false;
+                    }
+                    else
+                    {
+                        buttonBoard[row, col].BackColor = Color.White;
                     }
 
                     this.Controls.Add(buttonBoard[row, col]);
@@ -94,6 +97,7 @@ namespace Ex05.Damka
             this.PerformLayout();
 
         }
+
         protected override void OnShown(EventArgs e)
         {
             base.OnShown(e);
@@ -109,7 +113,12 @@ namespace Ex05.Damka
                 {
                     if (buttonBoard[col, row].Enabled == true)
                     {
-                        buttonBoard[col, row].Text = createGame.GameBoardAsArray[row, col].ToString();
+                        if (char.Parse(playGame.GameBoardAsArray[row, col].ToString()) == '\0')
+                        {
+                            buttonBoard[col, row].Text = string.Empty;
+                            break;
+                        }
+                        buttonBoard[col, row].Text = playGame.GameBoardAsArray[row, col].ToString();
                     }
                 }
             }
@@ -117,7 +126,6 @@ namespace Ex05.Damka
         private void buttonBoard_Click(object sender, EventArgs e)
         {
 
-            Button end;
             if (!m_ValidMove)
             {
                 currentButtonToMove = (sender as Button);
@@ -125,9 +133,9 @@ namespace Ex05.Damka
             }
             else
             {
-                end = (sender as Button);
-                endMove(currentButtonToMove, end);
-
+                endMove(currentButtonToMove, (sender as Button));
+                showBoardFromLogic();
+                m_ValidMove = false;
 
             }
         }
@@ -138,10 +146,22 @@ namespace Ex05.Damka
             int yValueStart = (currentButtonToMove.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
             int xValueEnd = (end.Location.X - buttonBoard[0, 0].Location.X) / 40;
             int yValueEnd = (end.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
-            PlayGame playGame = new PlayGame();
-            Move move = new Move(new Position(xValueStart, yValueStart), new Position(xValueEnd, yValueEnd));
+            if (xValueStart == xValueEnd && yValueStart == yValueEnd)
+            {
+                currentButtonToMove.BackColor = Color.White;
+                m_ValidMove = false;
+                return;
+            }
+            Position m_PositionStart = new Position(yValueStart, xValueStart);
+            Position m_PositionEnd = new Position(yValueEnd, xValueEnd);
+            Move move = new Move(m_PositionStart, m_PositionEnd);
+            Player.SetPlayer(ref playGame.CurrentPlayer);
             playGame.MovePiece(move);
 
+            //MessageBox.Show(playGame.Pieces[0].Type.ToString());
+            currentButtonToMove.BackColor = Color.White;
+            m_ValidMove = false;
+            MessageBox.Show(string.Format("{0} {1} > {2} {3}", xValueStart, yValueStart, xValueEnd, yValueEnd));
         }
 
         private void startMove(Button start)
@@ -150,13 +170,13 @@ namespace Ex05.Damka
             int yValueStart = (start.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
             if (GameRules.IsPlayerOneGame)
             {
-                if (createGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.X.ToString()) ||
-                createGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.K.ToString()))
+                if (playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.X.ToString()) ||
+                playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.K.ToString()))
                 {
                     m_ValidMove = true;
                 }
-                else if (createGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.O.ToString()) ||
-                createGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.U.ToString()))
+                else if (playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.O.ToString()) ||
+                playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.U.ToString()))
                 {
                     m_ValidMove = true;
                 }

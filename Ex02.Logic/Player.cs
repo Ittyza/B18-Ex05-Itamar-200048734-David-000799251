@@ -24,7 +24,7 @@ namespace Ex05.Ex02.Logic
 
         internal List<Move> ValidMoves { get => validMoves; set => validMoves = value; }
 
-        internal static void SetPlayer(ref Player currentPlayer)
+        public static void SetPlayer(ref Player currentPlayer)
         {
             if (GameRules.IsPlayerOneGame)
             {
