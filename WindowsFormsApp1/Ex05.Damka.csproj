@@ -53,6 +53,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI.cs" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -99,19 +100,11 @@
     <None Include="Resources\10x10board.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\BlackPiece.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KBlack.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\KRed.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\RedPiece.jpg" />
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="Resources\KRed.png" />
+    <None Include="Resources\KBlack.png" />
+    <None Include="Resources\BlackPiece.png" />
     <Content Include="Resources\DamkaIcon.ico" />
+    <None Include="Resources\RedPiece.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

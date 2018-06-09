@@ -21,7 +21,6 @@ namespace Ex05.Damka
         private CheckBox playerTwo;
         private Button buttonDone;
         private Label boardSize;
-        private MainForm mainForm;
 
         public RadioButton RadioButton6 { get => radioButton6; set => radioButton6 = value; }
         public RadioButton RadioButton8 { get => radioButton8; set => radioButton8 = value; }
@@ -163,7 +162,7 @@ namespace Ex05.Damka
             this.Text = "Damka - Start Game";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.FormBorderStyle = FormBorderStyle.FixedToolWindow;
-            //this.FormClosing += new FormClosingEventHandler(this.FormLogin_FormClosing);
+            this.FormClosing += new FormClosingEventHandler(this.FormLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -184,21 +183,8 @@ namespace Ex05.Damka
         }
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.WindowsShutDown) return;
-
-            if (this.DialogResult == DialogResult.Cancel)
-            {
-                switch (MessageBox.Show(this, "Are you sure?", "Do you want to close ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
-                {
-                    case DialogResult.No:
-                        e.Cancel = true;
-                        break;
-                    case DialogResult.Yes:
-                        break;
-                    default:
-                        break;
-                }
-            }
+            if (e.CloseReason == CloseReason.ApplicationExitCall) return;
+            
         }
 
         private void buttonDone_Click(object sender, EventArgs e)
@@ -210,29 +196,9 @@ namespace Ex05.Damka
             else
             {
                 setGameRules();
+                this.DialogResult = DialogResult.OK;
                 Close();
-                setSizeOfBoard();
-
-
             }
-        }
-        private void setSizeOfBoard()
-        {
-            mainForm = new MainForm();
-            switch (GameRules.SizeOfGameBoard)
-            {
-                case 6:
-                    mainForm.GameBoard.Image = WindowsFormsApp1.Properties.Resources._6x6board;
-                    break;
-                case 8:
-                    mainForm.GameBoard.Image = WindowsFormsApp1.Properties.Resources._8x8board;
-                    break;
-                case 10:
-                    mainForm.GameBoard.Image = WindowsFormsApp1.Properties.Resources._10x10board;
-                    break;
-            }
-            mainForm.ClientSize = new Size(mainForm.GameBoard.Image.Width + 24, mainForm.GameBoard.Image.Height + 36 + this.playerOne.Height);
-            mainForm.ShowDialog();
         }
 
         private void setGameRules()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Ex05.Ex02.Logic
 {
@@ -132,11 +133,11 @@ namespace Ex05.Ex02.Logic
 
                 if (pieceToMove == null)
                 {
-                    Console.WriteLine("INVALID PIECE SELECTED");
+                    MessageBox.Show("Invalid Piece");
                 }
                 else if (GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] != '\0')
                 {
-                    Console.WriteLine("THERE'S A PIECE ON THAT SQUARE");
+                    MessageBox.Show("THERE'S A PIECE ON THAT SQUARE");
                 }
                 else
                 {
@@ -163,7 +164,7 @@ namespace Ex05.Ex02.Logic
                     }
                     else
                     {
-                        Console.WriteLine("Not a valid end position");
+                        MessageBox.Show("Not a valid end position");
                     }
                 }
             }
@@ -178,12 +179,12 @@ namespace Ex05.Ex02.Logic
                     }
                     else
                     {
-                        Console.WriteLine(
+                        MessageBox.Show(String.Format(
                             "Pay Attention, you can eat one in {0}{1}>{2}{3}",
                             (eCapitalLetterDictionary)move.StartPosition.ColumnPosition,
                             ((eCapitalLetterDictionary)move.StartPosition.RowPosition).ToString().ToLower(),
                             (eCapitalLetterDictionary)move.EndPosition.ColumnPosition,
-                            ((eCapitalLetterDictionary)move.EndPosition.RowPosition).ToString().ToLower());
+                            ((eCapitalLetterDictionary)move.EndPosition.RowPosition).ToString().ToLower()));
                     }
                 }
             }

@@ -4,11 +4,12 @@ namespace Ex05.Ex02.Logic
 {
     public class CreateGame : GameRules
     {
-        public Piece[] Pieces;
+        private Piece[] m_pieces;
 
         internal char[,] m_GameBoardAsArray;
 
         public char[,] GameBoardAsArray { get => m_GameBoardAsArray; set => m_GameBoardAsArray = value; }
+        public Piece[] Pieces { get => m_pieces; set => m_pieces = value; }
 
         public CreateGame()
         {

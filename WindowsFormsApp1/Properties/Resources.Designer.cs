@@ -65,7 +65,7 @@ namespace WindowsFormsApp1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _10x10board {
             get {
-                object obj = ResourceManager.GetObject("10x10board", resourceCulture);
+                object obj = ResourceManager.GetObject("_10x10board", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -75,7 +75,7 @@ namespace WindowsFormsApp1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _6x6board {
             get {
-                object obj = ResourceManager.GetObject("6x6board", resourceCulture);
+                object obj = ResourceManager.GetObject("_6x6board", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -85,7 +85,7 @@ namespace WindowsFormsApp1.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap _8x8board {
             get {
-                object obj = ResourceManager.GetObject("8x8board", resourceCulture);
+                object obj = ResourceManager.GetObject("_8x8board", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -97,6 +97,16 @@ namespace WindowsFormsApp1.Properties {
             get {
                 object obj = ResourceManager.GetObject("BlackPiece", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
+        /// </summary>
+        internal static System.Drawing.Icon DamkaIcon {
+            get {
+                object obj = ResourceManager.GetObject("DamkaIcon", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
         
