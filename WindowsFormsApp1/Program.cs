@@ -5,7 +5,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ex05.Damka;
 
-
 namespace Ex05.Damka
 {
     public static class Program
