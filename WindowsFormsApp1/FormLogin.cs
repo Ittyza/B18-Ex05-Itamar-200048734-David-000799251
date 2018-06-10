@@ -23,9 +23,13 @@ namespace Ex05.Damka
         private Label boardSize;
 
         public RadioButton RadioButton6 { get => radioButton6; set => radioButton6 = value; }
+
         public RadioButton RadioButton8 { get => radioButton8; set => radioButton8 = value; }
+
         public RadioButton RadioButton10 { get => radioButton10; set => radioButton10 = value; }
+
         public TextBox TextBoxPlayerOne { get => textBoxPlayerOne; set => textBoxPlayerOne = value; }
+
         public TextBox TextBoxPlayerTwo { get => textBoxPlayerTwo; set => textBoxPlayerTwo = value; }
 
         public FormLogin()
@@ -46,18 +50,12 @@ namespace Ex05.Damka
             playerTwo = new CheckBox();
             buttonDone = new Button();
             SuspendLayout();
-            // 
-            // boardSize
-            // 
             boardSize.AutoSize = true;
             boardSize.Location = new System.Drawing.Point(31, 19);
             boardSize.Name = "boardSize";
             boardSize.Size = new System.Drawing.Size(58, 13);
             boardSize.TabIndex = 0;
             boardSize.Text = "Board Size";
-            // 
-            // radioButton6
-            // 
             radioButton6.AutoSize = true;
             radioButton6.Checked = true;
             radioButton6.Location = new System.Drawing.Point(55, 41);
@@ -67,9 +65,6 @@ namespace Ex05.Damka
             radioButton6.TabStop = true;
             radioButton6.Text = "6 x 6";
             radioButton6.UseVisualStyleBackColor = true;
-            // 
-            // radioButton8
-            // 
             radioButton8.AutoSize = true;
             radioButton8.Location = new System.Drawing.Point(147, 41);
             radioButton8.Name = "radioButton8";
@@ -78,9 +73,6 @@ namespace Ex05.Damka
             radioButton8.TabStop = true;
             radioButton8.Text = "8 x 8";
             radioButton8.UseVisualStyleBackColor = true;
-            // 
-            // radioButton10
-            // 
             radioButton10.AutoSize = true;
             radioButton10.Location = new System.Drawing.Point(239, 41);
             radioButton10.Name = "radioButton10";
@@ -89,46 +81,28 @@ namespace Ex05.Damka
             radioButton10.TabStop = true;
             radioButton10.Text = "10 x 10";
             radioButton10.UseVisualStyleBackColor = true;
-            // 
-            // players
-            // 
             players.AutoSize = true;
             players.Location = new System.Drawing.Point(31, 67);
             players.Name = "players";
             players.Size = new System.Drawing.Size(44, 13);
             players.TabIndex = 4;
             players.Text = "Players:";
-            // 
-            // playerOne
-            // 
             playerOne.AutoSize = true;
             playerOne.Location = new System.Drawing.Point(52, 94);
             playerOne.Name = "playerOne";
             playerOne.Size = new System.Drawing.Size(48, 13);
             playerOne.TabIndex = 5;
             playerOne.Text = "Player 1:";
-            // 
-            // textBoxPlayerOne
-            // 
             TextBoxPlayerOne.Location = new System.Drawing.Point(147, 91);
             TextBoxPlayerOne.Name = "textBoxPlayerOne";
             TextBoxPlayerOne.Size = new System.Drawing.Size(152, 20);
             TextBoxPlayerOne.TabIndex = 6;
-            // TO ERASE FOR SUBMITTING
-            textBoxPlayerOne.Text = "dav";
-
-            // 
-            // textBoxPlayerTwo
-            // 
             TextBoxPlayerTwo.Enabled = false;
             TextBoxPlayerTwo.Text = "Computer";
             TextBoxPlayerTwo.Location = new System.Drawing.Point(147, 135);
             TextBoxPlayerTwo.Name = "textBoxPlayerTwo";
             TextBoxPlayerTwo.Size = new System.Drawing.Size(152, 20);
             TextBoxPlayerTwo.TabIndex = 8;
-            // 
-            // playerTwo
-            // 
             playerTwo.AutoSize = true;
             playerTwo.Location = new System.Drawing.Point(33, 135);
             playerTwo.Name = "playerTwo";
@@ -137,9 +111,6 @@ namespace Ex05.Damka
             playerTwo.Text = "Player 2:";
             playerTwo.UseVisualStyleBackColor = true;
             playerTwo.CheckedChanged += new System.EventHandler(this.playerTwo_CheckedChanged);
-            // 
-            // buttonDone
-            // 
             buttonDone.Location = new System.Drawing.Point(222, 171);
             buttonDone.Name = "buttonDone";
             buttonDone.Size = new System.Drawing.Size(75, 23);
@@ -147,9 +118,6 @@ namespace Ex05.Damka
             buttonDone.Text = "Done";
             buttonDone.UseVisualStyleBackColor = true;
             buttonDone.Click += new System.EventHandler(this.buttonDone_Click);
-            // 
-            // FormLogin
-            // 
             ClientSize = new System.Drawing.Size(320, 210);
             Controls.Add(buttonDone);
             Controls.Add(TextBoxPlayerTwo);
@@ -169,7 +137,6 @@ namespace Ex05.Damka
             FormClosing += new FormClosingEventHandler(FormLogin_FormClosing);
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         private void playerTwo_CheckedChanged(object sender, EventArgs e)
@@ -184,7 +151,9 @@ namespace Ex05.Damka
                 TextBoxPlayerTwo.Enabled = false;
                 TextBoxPlayerTwo.Text = "Computer";
             }
+
         }
+
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (e.CloseReason == CloseReason.ApplicationExitCall) return;
@@ -214,7 +183,8 @@ namespace Ex05.Damka
             Player playerOne = new Player
             {
                 PlayerName = TextBoxPlayerOne.Text,
-                TypeOfPiece = 0
+                TypeOfPiece = 0,
+                Score = PlayGame.ScoreOfPlayerOne
             };
             GameRules.PlayerOne = playerOne;
             GameRules.GameIsOff = false;
@@ -226,7 +196,8 @@ namespace Ex05.Damka
                 Player playerTwo = new Player
                 {
                     PlayerName = TextBoxPlayerTwo.Text,
-                    TypeOfPiece = 1
+                    TypeOfPiece = 1,
+                    Score = PlayGame.ScoreOfPlayerTwo
                 };
                 GameRules.PlayerTwo = playerTwo;
             }
@@ -236,7 +207,7 @@ namespace Ex05.Damka
                 {
                     PlayerName = "Computer",
                     TypeOfPiece = 1,
-                    //Score = PlayGame.ScoreOfPlayerTwo
+                    Score = PlayGame.ScoreOfPlayerTwo
                 };
                 GameRules.PlayerTwo = playerTwo;
             }
@@ -249,16 +220,15 @@ namespace Ex05.Damka
             {
                 toReturn = 6;
             }
-
             else if (RadioButton8.Checked)
             {
                 toReturn = 8;
             }
-
             else if (RadioButton10.Checked)
             {
                 toReturn = 10;
             }
+
             return toReturn;
         }
     }

@@ -19,7 +19,7 @@ namespace Ex05.Ex02.Logic
             while (!GameRules.GameIsOff)
             {
                 Player.SetPlayer(ref CurrentPlayer);
-                initialiseMoves();
+                InitialiseMoves();
 
                 GameEnds();
                 
@@ -32,7 +32,6 @@ namespace Ex05.Ex02.Logic
                 }
                 else
                 {
-                    inputPositionFromUser = ValidateUserInput.validateInputPositionFromUser();
                 }
 
                 if (!theUserWantToQuit(inputPositionFromUser))
@@ -46,12 +45,11 @@ namespace Ex05.Ex02.Logic
 
         public void GameEnds()
         {
-            initialiseMoves();
+            InitialiseMoves();
             if (CurrentPlayer.ValidMoves.Count == 0 && CurrentPlayer.ValidJumpMoves.Count == 0)
             {
                 this.AggregateScore();
                 Console.WriteLine("No valid moves, do you want to play again? Please type yes");
-                
             }
         }
 
@@ -59,20 +57,18 @@ namespace Ex05.Ex02.Logic
         {
             if (ScoreOfPlayerOne >= ScoreOfPlayerTwo)
             {
-                s_TotalScorePlayerOne += ScoreOfPlayerOne - ScoreOfPlayerTwo;
+                TotalScorePlayerOne += ScoreOfPlayerOne - ScoreOfPlayerTwo;
             }
             else
             {
-                s_TotalScorePlayerTwo += ScoreOfPlayerTwo - ScoreOfPlayerOne;
+                TotalScorePlayerTwo += ScoreOfPlayerTwo - ScoreOfPlayerOne;
             }
 
-            Console.WriteLine("1Score: " + s_TotalScorePlayerOne + ", 2Score: " + s_TotalScorePlayerTwo);
+            Console.WriteLine("1Score: " + TotalScorePlayerOne + ", 2Score: " + TotalScorePlayerTwo);
 
             string isYes = Console.ReadLine();
             if (isYes.ToLower().Equals("yes"))
             {
-
-                new UI().Run();
             }
             else
             {
@@ -96,7 +92,7 @@ namespace Ex05.Ex02.Logic
         {
             Random random = null;
             Move AIMove = null;
-            initialiseMoves();
+            InitialiseMoves();
             if (!(CurrentPlayer.ValidJumpMoves.Count == 0))
             {
                 random = new Random();
@@ -116,7 +112,7 @@ namespace Ex05.Ex02.Logic
         // $G$ DSN-003 (-5) This method is too long. 
         public void MovePiece(Move i_Move)
         {
-            initialiseMoves();
+            InitialiseMoves();
 
             // There are no valid Jump Moves
             if (CurrentPlayer.ValidJumpMoves.Count == 0)
@@ -150,11 +146,8 @@ namespace Ex05.Ex02.Logic
                 else
                 {
                     if (!(CurrentPlayer.ValidMoves.Count == 0))
-
                     {
-
                         Pieces[index].PositionOfPiece = endPosition;
-
                         GameBoardAsArray[startPosition.RowPosition, startPosition.ColumnPosition] = '\0';
 
                         if (IsPlayerOneGame && endPosition.RowPosition == 0)
@@ -165,25 +158,21 @@ namespace Ex05.Ex02.Logic
                             Pieces[index].Type = 2;
 
                         }
-
                         else if (!IsPlayerOneGame && endPosition.RowPosition == SizeOfGameBoard - 1)
                         {
                             GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = 'U';
                             Pieces[index].Type = 3;
                         }
-
                         else
                         {
                             GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = char.Parse(((eType)pieceToMove.Type).ToString());
                         }
+
                         Player.changeCurrentPlayer(ref CurrentPlayer);
                     }
                     else
-
                     {
-
                         Console.WriteLine("Not a valid end position");
-
                     }
                 }
             }
@@ -279,7 +268,7 @@ namespace Ex05.Ex02.Logic
             Player.changeCurrentPlayer(ref CurrentPlayer);
         }
 
-        private void initialiseMoves()
+        public void InitialiseMoves()
         {
             CurrentPlayer.ValidMoves = new List<Move>();
             CurrentPlayer.ValidJumpMoves = new List<Move>();

@@ -18,11 +18,11 @@ namespace Ex05.Ex02.Logic
 
         public int TypeOfPiece { get => typeOfPiece; set => typeOfPiece = value; }
 
-        internal List<Move> ValidJumpMoves { get => validJumpMoves; set => validJumpMoves = value; }
+        public List<Move> ValidJumpMoves { get => validJumpMoves; set => validJumpMoves = value; }
 
         public int Score { get => score; set => score = value; }
 
-        internal List<Move> ValidMoves { get => validMoves; set => validMoves = value; }
+        public List<Move> ValidMoves { get => validMoves; set => validMoves = value; }
 
         public static void SetPlayer(ref Player currentPlayer)
         {
