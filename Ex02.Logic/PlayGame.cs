@@ -21,12 +21,8 @@ namespace Ex05.Ex02.Logic
                 Player.SetPlayer(ref CurrentPlayer);
                 initialiseMoves();
 
-                if (CurrentPlayer.ValidMoves.Count == 0 && CurrentPlayer.ValidJumpMoves.Count == 0)
-                {
-                    this.AggregateScore();
-                    Console.WriteLine("No valid moves, do you want to play again? Please type yes");
-                    FinishGame();
-                }
+                GameEnds();
+                
 
                 Console.Write("{0}\'s turn ({1}) : ", CurrentPlayer.PlayerName, (eType)CurrentPlayer.TypeOfPiece);
 
@@ -45,6 +41,17 @@ namespace Ex05.Ex02.Logic
                     Tools.PrintBoard(GameBoardAsArray);
                     Console.WriteLine("{0}'s move was ({1}): {2}", CurrentPlayer.PlayerName, (eType)CurrentPlayer.TypeOfPiece, inputPositionFromUser);
                 }
+            }
+        }
+
+        public void GameEnds()
+        {
+            initialiseMoves();
+            if (CurrentPlayer.ValidMoves.Count == 0 && CurrentPlayer.ValidJumpMoves.Count == 0)
+            {
+                this.AggregateScore();
+                Console.WriteLine("No valid moves, do you want to play again? Please type yes");
+                
             }
         }
 

@@ -121,6 +121,7 @@ namespace Ex05.Damka
                 }
             }
             AIMoves();
+            playGame.GameEnds();
             
         }
 
