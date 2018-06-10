@@ -21,32 +21,32 @@ namespace Ex05.Ex02.Logic
         {
             Pieces = new Piece[(SizeOfGameBoard * (SizeOfGameBoard - 2)) / 2];
             int k = 0;
-            for (int i = 0; i < SizeOfGameBoard; i++)
+            for (int row = 0; row < SizeOfGameBoard; row++)
             {
-                for (int j = 0; j < SizeOfGameBoard; j++)
+                for (int col = 0; col < SizeOfGameBoard; col++)
                 {
-                    if (i < (SizeOfGameBoard / 2) - 1)
+                    if (row < (SizeOfGameBoard / 2) - 1)
                     {
-                        if ((i + j) % 2 == 1)
+                        if ((row + col) % 2 == 1)
                         {
                             Pieces[k] = new Piece();
                             Pieces[k].IsAlive = true;
-                            Pieces[k].PositionOfPiece = new Position(i, j);
+                            Pieces[k].PositionOfPiece = new Position(row, col);
                             Pieces[k].Type = 1;
-                            GameBoardAsArray[i, j] = char.Parse(((eType)Pieces[k].Type).ToString());
+                            GameBoardAsArray[row, col] = char.Parse(((eType)Pieces[k].Type).ToString());
                             k++;
                         }
                     }
 
-                    if (i > (SizeOfGameBoard / 2))
+                    if (row > (SizeOfGameBoard / 2))
                     {
-                        if ((i + j) % 2 == 1)
+                        if ((row + col) % 2 == 1)
                         {
                             Pieces[k] = new Piece();
                             Pieces[k].IsAlive = true;
-                            Pieces[k].PositionOfPiece = new Position(i, j);
+                            Pieces[k].PositionOfPiece = new Position(row, col);
                             Pieces[k].Type = 0;
-                            GameBoardAsArray[i, j] = char.Parse(((eType)Pieces[k].Type).ToString());
+                            GameBoardAsArray[row, col] = char.Parse(((eType)Pieces[k].Type).ToString());
                             k++;
                         }
                     }

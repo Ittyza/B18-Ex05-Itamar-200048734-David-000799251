@@ -19,7 +19,7 @@ namespace Ex05.Ex02.Logic
         {
             Player playerOne = new Player
             {
-                PlayerName = ValidateUserInput.validInputFromUser(),
+                PlayerName = ValidateUserInput.ValidInputFromUser(),
                 TypeOfPiece = 0
             };
             GameRules.PlayerOne = playerOne;
@@ -33,7 +33,7 @@ namespace Ex05.Ex02.Logic
             {
                 Player playerTwo = new Player
                 {
-                    PlayerName = ValidateUserInput.validInputFromUser(),
+                    PlayerName = ValidateUserInput.ValidInputFromUser(),
                     TypeOfPiece = 1
                 };
                 GameRules.PlayerTwo = playerTwo;

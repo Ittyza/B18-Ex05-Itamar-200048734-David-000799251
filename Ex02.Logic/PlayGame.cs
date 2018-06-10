@@ -135,17 +135,12 @@ namespace Ex05.Ex02.Logic
                     MessageBox.Show("Invalid Piece");
                 }
 
-
-
-
                 if (GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] != '\0')
                 {
                     MessageBox.Show("THERE'S A PIECE ON THAT SQUARE");
                 }
                 else
-
                 {
-
                     if (!(CurrentPlayer.ValidMoves.Count == 0))
 
                     {
@@ -155,7 +150,6 @@ namespace Ex05.Ex02.Logic
                         GameBoardAsArray[startPosition.RowPosition, startPosition.ColumnPosition] = '\0';
 
                         if (IsPlayerOneGame && endPosition.RowPosition == 0)
-
                         {
 
                             GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = 'K';
@@ -165,29 +159,17 @@ namespace Ex05.Ex02.Logic
                         }
 
                         else if (!IsPlayerOneGame && endPosition.RowPosition == SizeOfGameBoard - 1)
-
                         {
-
                             GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = 'U';
-
                             Pieces[index].Type = 3;
-
                         }
 
                         else
-
                         {
-
                             GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = char.Parse(((eType)pieceToMove.Type).ToString());
-
                         }
-
-
-
                         Player.changeCurrentPlayer(ref CurrentPlayer);
-
                     }
-
                     else
 
                     {

@@ -38,8 +38,7 @@ namespace Ex05.Ex02.Logic
             return NumberOfSizeBoard;
         }
 
-        // $G$ CSS-999 (-3) internal methods should start with an uppercase letter
-        internal static string validInputFromUser()
+        internal static string ValidInputFromUser()
         {
             bool isValid = false;
 
