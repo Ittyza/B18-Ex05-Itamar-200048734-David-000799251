@@ -23,16 +23,16 @@ namespace Ex05.Ex02.Logic
 
                 if (CurrentPlayer.ValidMoves.Count == 0 && CurrentPlayer.ValidJumpMoves.Count == 0)
                 {
-                    this.aggregateScore();
+                    this.AggregateScore();
                     Console.WriteLine("No valid moves, do you want to play again? Please type yes");
-                    finishGame();
+                    FinishGame();
                 }
 
                 Console.Write("{0}\'s turn ({1}) : ", CurrentPlayer.PlayerName, (eType)CurrentPlayer.TypeOfPiece);
 
                 if (CurrentPlayer.PlayerName.Equals("Computer"))
                 {
-                    inputPositionFromUser = getAIMoves().ToString();
+                    inputPositionFromUser = GetAIMoves().ToString();
                 }
                 else
                 {
@@ -48,7 +48,7 @@ namespace Ex05.Ex02.Logic
             }
         }
 
-        private void finishGame()
+        public void FinishGame()
         {
             if (ScoreOfPlayerOne >= ScoreOfPlayerTwo)
             {
@@ -85,7 +85,7 @@ namespace Ex05.Ex02.Logic
             //MovePiece(move);
         }
 
-        private Move getAIMoves()
+        public Move GetAIMoves()
         {
             Random random = null;
             Move AIMove = null;
@@ -201,7 +201,7 @@ namespace Ex05.Ex02.Logic
             }
         }
 
-        private void aggregateScore()
+        public void AggregateScore()
         {
             ScoreOfPlayerOne = 0;
             ScoreOfPlayerTwo = 0;
@@ -612,7 +612,7 @@ namespace Ex05.Ex02.Logic
         private bool theUserWantToQuit(string i_InputPositionFromUser)
         {
             bool result = false;
-            aggregateScore();
+            AggregateScore();
             if (i_InputPositionFromUser.Equals('Q'.ToString()))
             {
                 bool isPlayerOneWinning = ScoreOfPlayerOne > ScoreOfPlayerTwo ? true : false;
@@ -622,7 +622,7 @@ namespace Ex05.Ex02.Logic
                 {
                     Console.WriteLine("The game ended. if you want to start again press yes please");
                     GameIsOff = true;
-                    finishGame();
+                    FinishGame();
                 }
                 else if (ScoreOfPlayerOne == ScoreOfPlayerTwo)
                 {
