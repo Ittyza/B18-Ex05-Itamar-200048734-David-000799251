@@ -82,7 +82,7 @@ namespace Ex05.Ex02.Logic
             Position oldPosition = new Position(oldPositionOfPieceRow, oldPositionOfPieceColumn);
             Position newPosition = new Position(newPositionOfPieceRow, newPositionOfPieceColumn);
             Move move = new Move(oldPosition, newPosition);
-            //MovePiece(move);
+            MovePiece(move);
         }
 
         public Move GetAIMoves()
