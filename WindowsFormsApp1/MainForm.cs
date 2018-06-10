@@ -157,8 +157,6 @@ namespace Ex05.Damka
             Move move = new Move(m_PositionStart, m_PositionEnd);
             Player.SetPlayer(ref playGame.CurrentPlayer);
             playGame.MovePiece(move);
-
-            //MessageBox.Show(playGame.Pieces[0].Type.ToString());
             currentButtonToMove.BackColor = Color.White;
             m_ValidMove = false;
             
@@ -186,6 +184,10 @@ namespace Ex05.Damka
                 {
                     m_ValidMove = true;
                     start.BackColor = Color.LightBlue;
+                }
+                if (GameRules.PlayerTwo.PlayerName == "Computer")
+                {
+                    playGame.MovePieceFromLetters(playGame.GetAIMoves().ToString());
                 }
             }
         }
