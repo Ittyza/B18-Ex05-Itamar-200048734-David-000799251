@@ -152,8 +152,8 @@ namespace Ex05.Damka
                 m_ValidMove = false;
                 return;
             }
-            Position m_PositionStart = new Position(yValueStart, xValueStart);
-            Position m_PositionEnd = new Position(yValueEnd, xValueEnd);
+            Position m_PositionStart = new Position(xValueStart, yValueStart);
+            Position m_PositionEnd = new Position(xValueEnd, yValueEnd);
             Move move = new Move(m_PositionStart, m_PositionEnd);
             Player.SetPlayer(ref playGame.CurrentPlayer);
             playGame.MovePiece(move);
@@ -174,13 +174,13 @@ namespace Ex05.Damka
             if (GameRules.IsPlayerOneGame)
 
             {
-                if (playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.X.ToString()) ||
-                playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.K.ToString()))
+                if (playGame.GameBoardAsArray[xValueStart, yValueStart] == char.Parse(PlayGame.eType.X.ToString()) ||
+                playGame.GameBoardAsArray[xValueStart, yValueStart] == char.Parse(PlayGame.eType.K.ToString()))
                 {
                     m_ValidMove = true;
                 }
-                else if (playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.O.ToString()) ||
-                playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.U.ToString()))
+                else if (playGame.GameBoardAsArray[xValueStart, yValueStart] == char.Parse(PlayGame.eType.O.ToString()) ||
+                playGame.GameBoardAsArray[xValueStart, yValueStart] == char.Parse(PlayGame.eType.U.ToString()))
                 {
                     m_ValidMove = true;
                 }
