@@ -16,7 +16,6 @@ namespace Ex05.Damka
                 mainForm.MaximizeBox = false;
                 mainForm.ShowDialog();
             }
-            
         }
     }
 }

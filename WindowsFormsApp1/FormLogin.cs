@@ -9,7 +9,7 @@ using Ex05.Ex02.Logic;
 
 namespace Ex05.Damka
 {
-    class FormLogin : Form
+    internal class FormLogin : Form
     {
         private RadioButton radioButton6;
         private RadioButton radioButton8;
@@ -151,13 +151,14 @@ namespace Ex05.Damka
                 TextBoxPlayerTwo.Enabled = false;
                 TextBoxPlayerTwo.Text = "Computer";
             }
-
         }
 
         private void FormLogin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (e.CloseReason == CloseReason.ApplicationExitCall) return;
-            
+            if (e.CloseReason == CloseReason.ApplicationExitCall)
+            {
+                return;
+            }
         }
 
         private void buttonDone_Click(object sender, EventArgs e)

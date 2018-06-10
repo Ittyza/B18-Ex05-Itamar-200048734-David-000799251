@@ -20,12 +20,9 @@ namespace Ex05.Damka
         private bool m_ValidMove = false;
         private PlayGame playGame;
         private Button currentButtonToMove;
-        
 
         public MainForm()
         {
-            //InitializeComponent();
-            //InitiateImages();
         }
 
         public Image BoardImage { get => BoardImage; set => BoardImage = value; }
@@ -85,7 +82,6 @@ namespace Ex05.Damka
 
             ResumeLayout(false);
             PerformLayout();
-
         }
 
         protected override void OnShown(EventArgs e)
@@ -105,7 +101,6 @@ namespace Ex05.Damka
                     {
                         buttonBoard[row, col].Text = playGame.GameBoardAsArray[row, col].ToString();
                     }
-
                 }
             }
 
@@ -116,9 +111,10 @@ namespace Ex05.Damka
         private void GameEnds()
         {
             playGame.InitialiseMoves();
-            if(playGame.CurrentPlayer.ValidMoves.Count == 0 && playGame.CurrentPlayer.ValidJumpMoves.Count == 0)
+            if (playGame.CurrentPlayer.ValidMoves.Count == 0 && playGame.CurrentPlayer.ValidJumpMoves.Count == 0)
             {
                 playGame.AggregateScore();
+
                 if (PlayGame.ScoreOfPlayerOne >= PlayGame.ScoreOfPlayerTwo)
                 {
                     GameRules.TotalScorePlayerOne += PlayGame.ScoreOfPlayerOne - PlayGame.ScoreOfPlayerTwo;
@@ -153,7 +149,6 @@ namespace Ex05.Damka
                 }
                 catch (NullReferenceException)
                 {
-
                 }
 
                 showBoardFromLogic();
@@ -163,15 +158,14 @@ namespace Ex05.Damka
 
         private void buttonBoard_Click(object sender, EventArgs e)
         {
-
             if (!m_ValidMove)
             {
-                currentButtonToMove = (sender as Button);
+                currentButtonToMove = sender as Button;
                 startMove(currentButtonToMove);
             }
             else
             {
-                endMove(currentButtonToMove, (sender as Button));
+                endMove(currentButtonToMove, sender as Button);
                 m_ValidMove = false;
             }
 

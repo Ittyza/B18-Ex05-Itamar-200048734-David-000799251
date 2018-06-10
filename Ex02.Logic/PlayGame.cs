@@ -9,10 +9,10 @@ namespace Ex05.Ex02.Logic
 {
     public partial class PlayGame : CreateGame
     {
-        public Player CurrentPlayer = new Player();
         public static int ScoreOfPlayerOne = 0;
         public static int ScoreOfPlayerTwo = 0;
-
+        public Player CurrentPlayer = new Player();
+        
         internal void RunGame()
         {
             string inputPositionFromUser = string.Empty;
@@ -20,10 +20,7 @@ namespace Ex05.Ex02.Logic
             {
                 Player.SetPlayer(ref CurrentPlayer);
                 InitialiseMoves();
-
                 GameEnds();
-                
-
                 Console.Write("{0}\'s turn ({1}) : ", CurrentPlayer.PlayerName, (eType)CurrentPlayer.TypeOfPiece);
 
                 if (CurrentPlayer.PlayerName.Equals("Computer"))
@@ -152,11 +149,8 @@ namespace Ex05.Ex02.Logic
 
                         if (IsPlayerOneGame && endPosition.RowPosition == 0)
                         {
-
                             GameBoardAsArray[endPosition.RowPosition, endPosition.ColumnPosition] = 'K';
-
                             Pieces[index].Type = 2;
-
                         }
                         else if (!IsPlayerOneGame && endPosition.RowPosition == SizeOfGameBoard - 1)
                         {
@@ -187,7 +181,7 @@ namespace Ex05.Ex02.Logic
                     }
                     else
                     {
-                        MessageBox.Show(String.Format(
+                        MessageBox.Show(string.Format(
                             "Pay Attention, you can eat one in {0}{1}>{2}{3}",
                             (eCapitalLetterDictionary)move.StartPosition.ColumnPosition,
                             ((eCapitalLetterDictionary)move.StartPosition.RowPosition).ToString().ToLower(),
