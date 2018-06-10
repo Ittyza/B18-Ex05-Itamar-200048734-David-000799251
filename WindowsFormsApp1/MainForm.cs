@@ -38,12 +38,13 @@ namespace Ex05.Damka
             playerTwo = new Label();
             buttonBoard = new Button[GameRules.SizeOfGameBoard, GameRules.SizeOfGameBoard];
             playGame = new PlayGame();
+            playGame.AggregateScore();
             SuspendLayout();
             // 
             // playerOne
             // 
             playerOne.AutoSize = true;
-            playerOne.Text = GameRules.PlayerOne.PlayerName + ": " + GameRules.PlayerOne.Score;
+            playerOne.Text = GameRules.PlayerOne.PlayerName + ": " + PlayGame.ScoreOfPlayerOne;
             playerOne.Top = 12;
             playerOne.Left = 12;
             playerOne.Name = "playerOne";
@@ -54,7 +55,7 @@ namespace Ex05.Damka
             playerTwo.Top = 12;
             playerTwo.Left = ClientSize.Width - 24 - this.playerTwo.Width;
             playerTwo.Name = "playerTwo";
-            playerTwo.Text = GameRules.PlayerTwo.PlayerName + ": " + GameRules.PlayerTwo.Score;
+            playerTwo.Text = GameRules.PlayerTwo.PlayerName + ": " + PlayGame.ScoreOfPlayerTwo;
             //
             // MainForm
             // 
@@ -131,6 +132,10 @@ namespace Ex05.Damka
                 
                 m_ValidMove = false;
             }
+
+            playGame.AggregateScore();
+            playerOne.Text = GameRules.PlayerOne.PlayerName + ": " + PlayGame.ScoreOfPlayerOne;
+            playerTwo.Text = GameRules.PlayerTwo.PlayerName + ": " + PlayGame.ScoreOfPlayerTwo;
             showBoardFromLogic();
 
         }
