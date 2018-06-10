@@ -13,8 +13,8 @@ namespace Ex05.Damka
 {
     public partial class MainForm : Form
     {
-        private Label playerTwo;
-        private Label playerOne;
+        private Label playerTwo = new Label();
+        private Label playerOne = new Label();
         private PictureBox redPiece;
         private PictureBox redKing;
         private PictureBox blackPiece;
@@ -34,41 +34,41 @@ namespace Ex05.Damka
 
         private void InitializeComponent()
         {
-            this.playerOne = new Label();
-            this.playerTwo = new Label();
-            this.buttonBoard = new Button[GameRules.SizeOfGameBoard, GameRules.SizeOfGameBoard];
-            this.playGame = new PlayGame();
-            this.SuspendLayout();
+            playerOne = new Label();
+            playerTwo = new Label();
+            buttonBoard = new Button[GameRules.SizeOfGameBoard, GameRules.SizeOfGameBoard];
+            playGame = new PlayGame();
+            SuspendLayout();
             // 
             // playerOne
             // 
-            this.playerOne.AutoSize = true;
-            this.playerOne.Text = GameRules.PlayerOne.PlayerName + ": " + GameRules.PlayerOne.Score;
-            this.playerOne.Top = 12;
-            this.playerOne.Left = 12;
-            this.playerOne.Name = "playerOne";
+            playerOne.AutoSize = true;
+            playerOne.Text = GameRules.PlayerOne.PlayerName + ": " + GameRules.PlayerOne.Score;
+            playerOne.Top = 12;
+            playerOne.Left = 12;
+            playerOne.Name = "playerOne";
             // 
             // playerTwo
             // 
-            this.playerTwo.AutoSize = true;
-            this.playerTwo.Top = 12;
-            this.playerTwo.Left = ClientSize.Width - 24 - this.playerTwo.Width;
-            this.playerTwo.Name = "playerTwo";
-            this.playerTwo.Text = GameRules.PlayerTwo.PlayerName + ": " + GameRules.PlayerTwo.Score;
+            playerTwo.AutoSize = true;
+            playerTwo.Top = 12;
+            playerTwo.Left = ClientSize.Width - 24 - this.playerTwo.Width;
+            playerTwo.Name = "playerTwo";
+            playerTwo.Text = GameRules.PlayerTwo.PlayerName + ": " + GameRules.PlayerTwo.Score;
             //
             // MainForm
             // 
-            this.Controls.Add(this.playerOne);
-            this.Controls.Add(this.playerTwo);
-            this.Name = "MainForm";
-            this.Text = "Damka";
-            this.ClientSize = new Size((GameRules.SizeOfGameBoard * GameRules.SizeOfGameBoard) + 100, (GameRules.SizeOfGameBoard * GameRules.SizeOfGameBoard) + 110);
-            this.AutoSize = true;
+            Controls.Add(this.playerOne);
+            Controls.Add(this.playerTwo);
+            Name = "MainForm";
+            Text = "Damka";
+            ClientSize = new Size((GameRules.SizeOfGameBoard * GameRules.SizeOfGameBoard) + 100, (GameRules.SizeOfGameBoard * GameRules.SizeOfGameBoard) + 110);
+            AutoSize = true;
 
             int xStartValue = playerOne.Left;
             int yStartValue = playerOne.Height + 12;
             int xCurrentValue;
-            int yCyrrentValue;
+            int yCurrentValue;
 
             for (int row = 0; row < GameRules.SizeOfGameBoard; row++)
             {
@@ -77,8 +77,8 @@ namespace Ex05.Damka
                     buttonBoard[row, col] = new Button();
                     buttonBoard[row, col].Size = new Size(40, 40);
                     xCurrentValue = xStartValue + (row * 40);
-                    yCyrrentValue = yStartValue + (col * 40);
-                    buttonBoard[row, col].Location = new Point(xCurrentValue, yCyrrentValue);
+                    yCurrentValue = yStartValue + (col * 40);
+                    buttonBoard[row, col].Location = new Point(xCurrentValue, yCurrentValue);
                     if (((col + row) % 2) == 0)
                     {
                         buttonBoard[row, col].BackColor = Color.DarkGray;
@@ -93,8 +93,8 @@ namespace Ex05.Damka
                     buttonBoard[row, col].Click += new EventHandler(buttonBoard_Click);
                 }
             }
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -166,9 +166,13 @@ namespace Ex05.Damka
 
         private void startMove(Button start)
         {
+
+            // Attempt to link valid move from playgame.
+
             int xValueStart = (start.Location.X - buttonBoard[0, 0].Location.X) / 40;
             int yValueStart = (start.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
             if (GameRules.IsPlayerOneGame)
+
             {
                 if (playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.X.ToString()) ||
                 playGame.GameBoardAsArray[yValueStart, xValueStart] == char.Parse(PlayGame.eType.K.ToString()))
@@ -205,6 +209,11 @@ namespace Ex05.Damka
             //this.redPiece.Left = scorePlayer1.Right + 12;
             this.Controls.Add(redPiece);
             this.Controls.Add(blackPiece);
+        }
+
+        public void sendInputToLogicLayer()
+        {
+
         }
 
     }

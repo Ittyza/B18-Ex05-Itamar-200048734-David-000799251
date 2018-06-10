@@ -12,7 +12,8 @@ namespace Ex05.Damka
             {
                 MainForm mainForm = new MainForm();
                 mainForm.StartPosition = FormStartPosition.CenterScreen;
-                mainForm.FormBorderStyle = FormBorderStyle.FixedToolWindow;
+                mainForm.FormBorderStyle = FormBorderStyle.FixedDialog;
+                mainForm.MaximizeBox = false;
                 mainForm.ShowDialog();
             }
             
