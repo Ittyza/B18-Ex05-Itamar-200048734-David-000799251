@@ -89,6 +89,7 @@ namespace Ex05.Ex02.Logic
         {
             Random random = null;
             Move AIMove = null;
+            initialiseMoves();
             if (!(CurrentPlayer.ValidJumpMoves.Count == 0))
             {
                 random = new Random();

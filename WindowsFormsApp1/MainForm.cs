@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ex05.Ex02.Logic;
@@ -21,8 +22,9 @@ namespace Ex05.Damka
         private PictureBox blackKing;
         private Button[,] buttonBoard;
         private bool m_ValidMove = false;
-        PlayGame playGame;
-        Button currentButtonToMove;
+        private PlayGame playGame;
+        private Button currentButtonToMove;
+        
 
         public MainForm()
         {
@@ -117,9 +119,24 @@ namespace Ex05.Damka
                     }
                 }
             }
+            AIMoves();
+            
         }
+
+        private void AIMoves()
+        {
+            Player.SetPlayer(ref playGame.CurrentPlayer);
+            if (playGame.CurrentPlayer.PlayerName.Equals("Computer"))
+            {
+                playGame.MovePieceFromLetters(playGame.GetAIMoves().ToString());
+                showBoardFromLogic();
+                return;
+            }
+        }
+
         private void buttonBoard_Click(object sender, EventArgs e)
         {
+
             if (!m_ValidMove)
             {
                 currentButtonToMove = (sender as Button);
@@ -128,8 +145,9 @@ namespace Ex05.Damka
             else
             {
                 endMove(currentButtonToMove, (sender as Button));
-                
+
                 m_ValidMove = false;
+
             }
             showBoardFromLogic();
 
@@ -150,11 +168,11 @@ namespace Ex05.Damka
             Position m_PositionStart = new Position(xValueStart, yValueStart);
             Position m_PositionEnd = new Position(xValueEnd, yValueEnd);
             Move move = new Move(m_PositionStart, m_PositionEnd);
-            Player.SetPlayer(ref playGame.CurrentPlayer);
+
             playGame.MovePiece(move);
             currentButtonToMove.BackColor = Color.White;
             m_ValidMove = false;
-            
+
             //MessageBox.Show(string.Format("{0} {1} > {2} {3}", xValueStart, yValueStart, xValueEnd, yValueEnd));
         }
 
@@ -180,10 +198,7 @@ namespace Ex05.Damka
                     m_ValidMove = true;
                     start.BackColor = Color.LightBlue;
                 }
-                if (GameRules.PlayerTwo.PlayerName == "Computer")
-                {
-                    playGame.MovePieceFromLetters(playGame.GetAIMoves().ToString());
-                }
+
             }
         }
 
