@@ -113,8 +113,7 @@ namespace Ex05.Damka
                 {
                     if (buttonBoard[row, col].Enabled == true)
                     {
-
-                        buttonBoard[col, row].Text = playGame.GameBoardAsArray[row, col].ToString();
+                        buttonBoard[row, col].Text = playGame.GameBoardAsArray[row, col].ToString();
                     }
                 }
             }
@@ -138,10 +137,10 @@ namespace Ex05.Damka
 
         private void endMove(Button currentButtonToMove, Button end)
         {
-            int xValueStart = (currentButtonToMove.Location.X - buttonBoard[0, 0].Location.X) / 40;
-            int yValueStart = (currentButtonToMove.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
-            int xValueEnd = (end.Location.X - buttonBoard[0, 0].Location.X) / 40;
-            int yValueEnd = (end.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
+            int yValueStart = (currentButtonToMove.Location.X - buttonBoard[0, 0].Location.X) / 40;
+            int xValueStart = (currentButtonToMove.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
+            int yValueEnd = (end.Location.X - buttonBoard[0, 0].Location.X) / 40;
+            int xValueEnd = (end.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
             if (xValueStart == xValueEnd && yValueStart == yValueEnd)
             {
                 currentButtonToMove.BackColor = Color.White;
@@ -164,8 +163,8 @@ namespace Ex05.Damka
         private void startMove(Button start)
         {
             // Attempt to link valid move from playgame.
-            int xValueStart = (start.Location.X - buttonBoard[0, 0].Location.X) / 40;
-            int yValueStart = (start.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
+            int yValueStart = (start.Location.X - buttonBoard[0, 0].Location.X) / 40;
+            int xValueStart = (start.Location.Y - buttonBoard[0, 0].Location.Y) / 40;
             if (GameRules.IsPlayerOneGame)
             {
                 if (playGame.GameBoardAsArray[xValueStart, yValueStart] == char.Parse(PlayGame.eType.X.ToString()) ||
